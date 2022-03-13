@@ -1,0 +1,19 @@
+enum AnnonceType {
+  OFFER
+  DEMAND
+}
+
+type Annonce @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  text: String
+  contactName: String
+  contactEmail: String
+  contactPhone: String
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+  deletedAt: AWSTimestamp
+  photos: [String]
+  type: AnnonceType
+}
+ 

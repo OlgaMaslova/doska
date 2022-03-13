@@ -1,0 +1,6 @@
+{
+  "AppSyncApiName": "annoncesapp",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2022-03-13T19:05:55.571Z"
+}

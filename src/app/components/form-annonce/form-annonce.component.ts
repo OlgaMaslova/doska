@@ -6,6 +6,7 @@ import {
     FormGroup,
     Validators
 } from '@angular/forms';
+import { AnnonceService } from 'src/app/annonce.service';
 
 @Component({
     selector: 'app-form-annonce',
@@ -15,7 +16,11 @@ import {
 export class FormAnnonceComponent implements OnInit {
     form: FormGroup;
 
-    constructor(private fb: FormBuilder, private location: Location) {}
+    constructor(
+        private fb: FormBuilder,
+        private location: Location,
+        private annonceService: AnnonceService
+    ) {}
 
     ngOnInit(): void {
         this.form = this.fb.group({
@@ -42,12 +47,13 @@ export class FormAnnonceComponent implements OnInit {
                 errors[key as string] = this.form.controls[key].errors;
             }
         }
-        console.log(errors);
         return errors;
     }
 
-    onSubmit() {
+    async onSubmit() {
         // TODO
+        console.log('in onSubmit');
+        await this.annonceService.createAnnonce();
     }
 
     onCancel() {
