@@ -1,0 +1,19 @@
+<div class="list-container">
+
+    <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="They need">
+            <div class="column">
+                <div class="card-wrapper" *ngFor="let seek of annoncesSeek">
+                    <annonce-card [annonce]="seek"></annonce-card>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="They offer">
+            <div class="column">
+                <div class="card-wrapper" *ngFor="let offer of annoncesOffer">
+                    <annonce-card [annonce]="offer"></annonce-card>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

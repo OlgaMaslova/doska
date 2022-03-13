@@ -1,0 +1,18 @@
+img {
+    height: fit-content; //so that it takes up full space
+    max-height: 200px !important; // this prevents the image from being extremely big
+    object-fit: cover; 
+    object-position: center; /* this centers and crops the image so that it doesn't break the aspect ratio */
+}
+
+  .contact-container {
+      display: flex;
+      align-items: center;
+      height: 2rem;
+      justify-content: center;
+
+      .contact-info {
+          display: flex;
+          margin-right: 1rem;
+      }
+  }

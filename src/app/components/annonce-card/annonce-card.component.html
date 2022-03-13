@@ -1,0 +1,31 @@
+<mat-card class="my-card">
+    <mat-card-header class="card-header">
+      <mat-card-title>{{annonce.title}}</mat-card-title>
+      <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+    </mat-card-header>
+    <img [hidden]="!annonce.coverPhoto" mat-card-image [src]="annonce.coverPhoto" [alt]="annonce.title">
+    <mat-card-content>
+        <p>{{annonce.text}}</p>
+    </mat-card-content>
+    <mat-card-footer >
+        <div class="contact-container">
+            <div *ngIf="annonce.contact_name" class="contact-info"> 
+                <mat-icon svgIcon="person" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+                {{annonce.contact_name}}
+            </div>
+            <div *ngIf="annonce.contact_phone" class="contact-info"> 
+                <mat-icon svgIcon="phone" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+                {{annonce.contact_phone}}
+            </div>
+            <div *ngIf="annonce.contact_email" class="contact-info"> 
+                <mat-icon svgIcon="email" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+                {{annonce.contact_email}}
+            </div>
+        
+        </div>
+    </mat-card-footer>
+    <!-- <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions> -->
+  </mat-card>

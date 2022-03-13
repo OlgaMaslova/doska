@@ -1,0 +1,42 @@
+[{
+    "type": "SEEK",
+    "title": "Need urgently",
+    "authorID": "123",
+    "text": "For teenagers 13-19 yo needed torches, socks, t-shirts",
+    "contact_phone": "123456789",
+    "contact_email": "me@gmail.com",
+    "contact_name": "John Doe",
+    "photos": [
+        "https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y3V0ZSUyMGNhdHxlbnwwfHwwfHw%3D&w=1000&q=80"
+    ]
+}, {
+    "type": "OFFER",
+    "title": "Babysitting, cleaning",
+    "authorID": "111",
+    "text": "Recently arrived can cook, babysit, clean",
+    "contact_phone": "1122334455",
+    "contact_email": "me2@gmail.com",
+    "contact_name": "Marisa Doe"
+},
+{
+    "type": "OFFER",
+    "title": "Hairdressing",
+    "authorID": "112",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "contact_phone": "1122334455",
+    "contact_email": "me2@gmail.com",
+    "contact_name": "Marisa Doe"
+}, 
+{
+    "type": "OFFER",
+    "title": "Veste garçon",
+    "authorID": "134",
+    "text": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "contact_phone": "1122334455",
+    "contact_email": "me3@gmail.com",
+    "contact_name": "Ivan Doe",
+    "photos": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDasrRNya0xBWt9aNBQ6E2RBqgyp4lN_1nZw&usqp=CAU"
+    ]
+}
+]
