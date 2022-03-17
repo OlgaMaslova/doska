@@ -1,0 +1,61 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateAnnonce {
+  onCreateAnnonce {
+    id
+    title
+    text
+    contactName
+    contactEmail
+    contactPhone
+    createdAt
+    updatedAt
+    deletedAt
+    photos
+    type
+    location
+    status
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateAnnonce {
+  onUpdateAnnonce {
+    id
+    title
+    text
+    contactName
+    contactEmail
+    contactPhone
+    createdAt
+    updatedAt
+    deletedAt
+    photos
+    type
+    location
+    status
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteAnnonce {
+  onDeleteAnnonce {
+    id
+    title
+    text
+    contactName
+    contactEmail
+    contactPhone
+    createdAt
+    updatedAt
+    deletedAt
+    photos
+    type
+    location
+    status
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}

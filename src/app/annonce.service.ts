@@ -1,25 +1,28 @@
 /* eslint-disable class-methods-use-this */
 import { Injectable } from '@angular/core';
-import { DataStore } from '@aws-amplify/datastore';
-import { AnnonceType, Annonce } from 'src/models';
+import { APIService, CreateAnnonceInput } from './API.service';
+import { Annonce } from './types.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AnnonceService {
-    constructor() {}
+    constructor(private API: APIService) {}
 
-    async createAnnonce() {
-        const annonce = await DataStore.save(
-            new Annonce({
-                title: 'Lorem ipsum dolor sit amet',
-                text: 'Lorem ipsum dolor sit amet',
-                contactName: 'Lorem ipsum dolor sit amet',
-                contactEmail: 'Lorem ipsum dolor sit amet',
-                contactPhone: 'Lorem ipsum dolor sit amet',
-                type: AnnonceType.OFFER
-            })
-        );
-        console.log(annonce);
+    async createAnnonce(input: CreateAnnonceInput): Promise<Annonce> {
+        return this.API.CreateAnnonce(input);
+    }
+
+    async getAnnonces(): Promise<Annonce[] | null> {
+        const annonces = (await this.API.ListAnnonces()).items as Annonce[];
+        if (annonces) {
+            for (const annonce of annonces) {
+                if (annonce.photos) {
+                    [annonce.coverPhoto] = annonce.photos;
+                }
+            }
+            return annonces;
+        }
+        return null;
     }
 }

@@ -7,6 +7,8 @@ import {
     Validators
 } from '@angular/forms';
 import { AnnonceService } from 'src/app/annonce.service';
+import { CreateAnnonceInput } from 'src/app/API.service';
+import { AnnonceStatus } from 'src/models';
 
 @Component({
     selector: 'app-form-annonce',
@@ -27,9 +29,12 @@ export class FormAnnonceComponent implements OnInit {
             type: [null, [Validators.required]],
             title: [null, [Validators.required]],
             text: [null, [Validators.required]],
-            name: [null],
-            phone: [null],
-            email: ['', [Validators.required, Validators.email]]
+            contactName: [null],
+            contactEmail: [null, [Validators.required, Validators.email]],
+            contactPhone: [null],
+            location: [null],
+            photo: [null],
+            status: AnnonceStatus.PENDING
         });
     }
 
@@ -51,9 +56,22 @@ export class FormAnnonceComponent implements OnInit {
     }
 
     async onSubmit() {
-        // TODO
-        console.log('in onSubmit');
-        await this.annonceService.createAnnonce();
+        const input = this.form.value;
+        if (!this.form.valid) {
+            return;
+        }
+        try {
+            if (input.photo) {
+                input.photos = [input.photo];
+                delete input.photo;
+            }
+            await this.annonceService.createAnnonce(
+                input as CreateAnnonceInput
+            );
+        } catch (e) {
+            console.error(e);
+        }
+        this.onCancel();
     }
 
     onCancel() {

@@ -1,0 +1,23 @@
+{
+    "Demands": "Demands",
+    "Offers": "Offers",
+    "Questions": "Questions",
+    "demand": "demand",
+    "offer": "offer",
+    "question": "question",
+    "Add annonce": "Add annonce",
+    "Your name": "Your name",
+    "Title": "Title",
+    "Type": "Type",
+    "Description": "Description",
+    "Location": "Location",
+    "Contact phone": "Contact phone",
+    "Your Email": "Your Email",
+    "Cancel": "Cancel",
+    "Submit": "Submit",
+    "Email is required": "Email is required",
+    "Please enter valid email": "Please enter valid email",
+    "Title is required": "Title is required",
+    "Description is required": "Description is required"
+
+}

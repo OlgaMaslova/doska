@@ -1,0 +1,70 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateAnnonce(
+  $input: CreateAnnonceInput!
+  $condition: ModelAnnonceConditionInput
+) {
+  createAnnonce(input: $input, condition: $condition) {
+    id
+    title
+    text
+    contactName
+    contactEmail
+    contactPhone
+    createdAt
+    updatedAt
+    deletedAt
+    photos
+    type
+    location
+    status
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateAnnonce(
+  $input: UpdateAnnonceInput!
+  $condition: ModelAnnonceConditionInput
+) {
+  updateAnnonce(input: $input, condition: $condition) {
+    id
+    title
+    text
+    contactName
+    contactEmail
+    contactPhone
+    createdAt
+    updatedAt
+    deletedAt
+    photos
+    type
+    location
+    status
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteAnnonce(
+  $input: DeleteAnnonceInput!
+  $condition: ModelAnnonceConditionInput
+) {
+  deleteAnnonce(input: $input, condition: $condition) {
+    id
+    title
+    text
+    contactName
+    contactEmail
+    contactPhone
+    createdAt
+    updatedAt
+    deletedAt
+    photos
+    type
+    location
+    status
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}

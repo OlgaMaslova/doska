@@ -1,41 +1,50 @@
 <div class="form-container">
     <div class="form-wrapper">
-        <h2>Add your annonce</h2>
+        <h2>{{'Add annonce' | translate }}</h2>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="fill">
-                <mat-label>Title</mat-label>
+                <mat-label>{{'Title' | translate }}</mat-label>
                 <input matInput formControlName="title">
-                <mat-error *ngIf="errors['title'] && errors['title'].required">Title is required</mat-error>
+                <mat-error *ngIf="errors['title'] && errors['title'].required">{{'Title is required'| translate}}</mat-error>
               </mat-form-field>
               <mat-form-field appearance="fill">
-                <mat-label>Type</mat-label>
+                <mat-label>{{'Type' | translate}}</mat-label>
                 <mat-select formControlName="type">
-                  <mat-option value="SEEK">SEEK</mat-option>
-                  <mat-option value="OFFER">OFFER</mat-option>
+                  <mat-option value="DEMAND">{{'demand' | translate | uppercase}}</mat-option>
+                  <mat-option value="OFFER">{{'offer' | translate | uppercase}}</mat-option>
+                  <mat-option value="QUESTION">{{'question' | translate | uppercase}}</mat-option>
                 </mat-select>
               </mat-form-field>
               <mat-form-field appearance="fill">
-                <mat-label>Description</mat-label>
+                <mat-label>{{'Description' | translate }}</mat-label>
                 <textarea matInput formControlName="text"></textarea>
-                <mat-error *ngIf="errors['text'] && errors['text'].required">Description is required</mat-error>
+                <mat-error *ngIf="errors['text'] && errors['text'].required">{{'Description is required' | translate}}</mat-error>
               </mat-form-field>
               <mat-form-field appearance="fill">
-                <mat-label>Your name</mat-label>
-                <input matInput formControlName="name">
+                <mat-label>{{'Photo link' | translate }}</mat-label>
+                <textarea matInput formControlName="photo"></textarea>
               </mat-form-field>
               <mat-form-field appearance="fill">
-                <mat-label>Contact phone</mat-label>
-                <input matInput formControlName="phone">
+                <mat-label>{{'Your name' | translate }}</mat-label>
+                <input matInput formControlName="contactName">
               </mat-form-field>
               <mat-form-field appearance="fill">
-                <mat-label>Your Email</mat-label>
-                <input matInput type="email"  formControlName="email">
-                <mat-error *ngIf="errors['email'] && errors['email'].required">Email is required</mat-error>
-                <mat-error *ngIf="errors['email'] && errors['email'].email">Please enter valid email</mat-error>
+                <mat-label>{{'Location' | translate }}</mat-label>
+                <input matInput formControlName="location" placeholder="Annecy">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>{{'Contact phone' | translate }}</mat-label>
+                <input matInput formControlName="contactPhone" placeholder="0601020304">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>{{'Your Email' | translate }}</mat-label>
+                <input matInput type="email"  formControlName="contactEmail">
+                <mat-error *ngIf="errors['contactEmail'] && errors['contactEmail'].required">{{'Email is required' | translate}}</mat-error>
+                <mat-error *ngIf="errors['contactEmail'] && errors['contactEmail'].email">{{'Please enter valid email' | translate}}</mat-error>
               </mat-form-field>
               <div class="form-action">
-                <button mat-flat-button color="accent" type="button" (click)="onCancel()">Cancel</button>
-                <button mat-flat-button color="primary" type="submit">Submit</button>
+                <button mat-flat-button color="accent" type="button" (click)="onCancel()">{{'Cancel' | translate}}</button>
+                <button mat-flat-button color="primary" type="submit">{{'Submit' | translate}}</button>
               </div>
         </form>
     

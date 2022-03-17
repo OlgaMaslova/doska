@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
-@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -11,7 +10,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 
-$my-palette: mat.define-palette(mat.$deep-purple-palette);
+$my-palette: mat.define-palette(mat.$indigo-palette);
 $amber-palette: mat.define-palette(mat.$amber-palette);
 .my-card {
   background-color: mat.get-color-from-palette($amber-palette, 100);
@@ -30,6 +29,7 @@ $amber-palette: mat.define-palette(mat.$amber-palette);
 }
 
 .header-container {
-  background-color: mat.get-color-from-palette($amber-palette, 500);
+  background-color: mat.get-color-from-palette($amber-palette, 700);
+  color: mat.get-color-from-palette($my-palette, 700);
 }
 

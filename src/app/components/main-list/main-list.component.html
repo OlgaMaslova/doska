@@ -1,17 +1,24 @@
 <div class="list-container">
 
     <mat-tab-group mat-align-tabs="center">
-        <mat-tab label="They need">
+        <mat-tab label="{{'Demands' | translate }}">
             <div class="column">
                 <div class="card-wrapper" *ngFor="let seek of annoncesSeek">
                     <annonce-card [annonce]="seek"></annonce-card>
                 </div>
             </div>
         </mat-tab>
-        <mat-tab label="They offer">
+        <mat-tab label="{{'Offers' | translate }}">
             <div class="column">
                 <div class="card-wrapper" *ngFor="let offer of annoncesOffer">
                     <annonce-card [annonce]="offer"></annonce-card>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="{{'Questions' | translate }}">
+            <div class="column">
+                <div class="card-wrapper" *ngFor="let question of questions">
+                    <annonce-card [annonce]="question"></annonce-card>
                 </div>
             </div>
         </mat-tab>

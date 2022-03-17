@@ -1,11 +1,11 @@
-export type Annonce = {
-    type: string;
-    title: string;
-    authorID: string;
-    text: string;
-    contact_phone: string;
-    contact_email: string;
-    contact_name: string;
-    photos: string[];
-    coverPhoto?: string | null;
+import { CreateAnnonceInput } from './API.service';
+
+export type AWSType = {
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
 };
+
+export type Annonce = {
+    coverPhoto?: string | null | undefined;
+} & CreateAnnonceInput &
+    AWSType;

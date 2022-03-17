@@ -9,17 +9,21 @@
     </mat-card-content>
     <mat-card-footer >
         <div class="contact-container">
-            <div *ngIf="annonce.contact_name" class="contact-info"> 
-                <mat-icon svgIcon="person" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
-                {{annonce.contact_name}}
+            <div *ngIf="annonce.contactName" class="contact-info"> 
+                <mat-icon svgIcon="person" aria-hidden="false"></mat-icon>
+                {{annonce.contactName}}
             </div>
-            <div *ngIf="annonce.contact_phone" class="contact-info"> 
-                <mat-icon svgIcon="phone" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
-                {{annonce.contact_phone}}
+            <div *ngIf="annonce.contactPhone" class="contact-info"> 
+                <mat-icon svgIcon="phone" aria-hidden="false"></mat-icon>
+                {{annonce.contactPhone}}
             </div>
-            <div *ngIf="annonce.contact_email" class="contact-info"> 
-                <mat-icon svgIcon="email" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
-                {{annonce.contact_email}}
+            <div *ngIf="annonce.contactEmail" class="contact-info"> 
+                <mat-icon svgIcon="email" aria-hidden="false"></mat-icon>
+                {{annonce.contactEmail}}
+            </div>
+            <div *ngIf="annonce.location" class="contact-info"> 
+                <mat-icon svgIcon="place" aria-hidden="false"></mat-icon>
+                {{annonce.location}}
             </div>
         
         </div>

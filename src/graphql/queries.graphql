@@ -1,0 +1,119 @@
+# this is an auto generated file. This will be overwritten
+query GetAnnonce($id: ID!) {
+  getAnnonce(id: $id) {
+    id
+    title
+    text
+    contactName
+    contactEmail
+    contactPhone
+    createdAt
+    updatedAt
+    deletedAt
+    photos
+    type
+    location
+    status
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListAnnonces(
+  $filter: ModelAnnonceFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAnnonces(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      title
+      text
+      contactName
+      contactEmail
+      contactPhone
+      createdAt
+      updatedAt
+      deletedAt
+      photos
+      type
+      location
+      status
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncAnnonces(
+  $filter: ModelAnnonceFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncAnnonces(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      title
+      text
+      contactName
+      contactEmail
+      contactPhone
+      createdAt
+      updatedAt
+      deletedAt
+      photos
+      type
+      location
+      status
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query AnnoncesByStatus(
+  $status: AnnonceStatus!
+  $sortDirection: ModelSortDirection
+  $filter: ModelAnnonceFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  annoncesByStatus(
+    status: $status
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      title
+      text
+      contactName
+      contactEmail
+      contactPhone
+      createdAt
+      updatedAt
+      deletedAt
+      photos
+      type
+      location
+      status
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}

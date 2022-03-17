@@ -14,7 +14,7 @@ export const schema = {
                     "name": "title",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "text": {
@@ -82,6 +82,22 @@ export const schema = {
                     },
                     "isRequired": false,
                     "attributes": []
+                },
+                "location": {
+                    "name": "location",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "status": {
+                    "name": "status",
+                    "isArray": false,
+                    "type": {
+                        "enum": "AnnonceStatus"
+                    },
+                    "isRequired": false,
+                    "attributes": []
                 }
             },
             "syncable": true,
@@ -90,6 +106,16 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byStatus",
+                        "queryField": "annoncesByStatus",
+                        "fields": [
+                            "status"
+                        ]
+                    }
                 },
                 {
                     "type": "auth",
@@ -115,10 +141,18 @@ export const schema = {
             "name": "AnnonceType",
             "values": [
                 "OFFER",
-                "DEMAND"
+                "DEMAND",
+                "QUESTION"
+            ]
+        },
+        "AnnonceStatus": {
+            "name": "AnnonceStatus",
+            "values": [
+                "PENDING",
+                "VALIDATED"
             ]
         }
     },
     "nonModels": {},
-    "version": "39e33aee5ba036ddc23ee7f30ec4179e"
+    "version": "bbfeaf37ce046689ba1fe3a632e7ac1f"
 };

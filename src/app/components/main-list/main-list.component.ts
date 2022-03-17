@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AnnonceService } from 'src/app/annonce.service';
+import { AnnonceType } from 'src/app/API.service';
 import { Annonce } from 'src/app/types.service';
 import mock from 'src/assets/annonces.json';
 
@@ -14,14 +16,24 @@ export class MainListComponent implements OnInit {
 
     annoncesOffer: Annonce[] = [];
 
-    constructor() {}
+    questions: Annonce[] = [];
+
+    constructor(private annonceService: AnnonceService) {}
 
     ngOnInit(): void {
-        this.annoncesOffer = this.annonces.filter(
-            (annonce) => annonce.type === 'OFFER'
+        this.getAnnonces();
+    }
+
+    async getAnnonces() {
+        const annonces = (await this.annonceService.getAnnonces()) as Annonce[];
+        this.annoncesOffer = annonces.filter(
+            (annonce) => annonce.type === AnnonceType.OFFER
         );
-        this.annoncesSeek = this.annonces.filter(
-            (annonce) => annonce.type === 'SEEK'
+        this.annoncesSeek = annonces.filter(
+            (annonce) => annonce.type === AnnonceType.DEMAND
+        );
+        this.questions = annonces.filter(
+            (annonce) => annonce.type === AnnonceType.QUESTION
         );
     }
 }

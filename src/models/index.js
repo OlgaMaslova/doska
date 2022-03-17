@@ -4,12 +4,19 @@ import { schema } from './schema';
 
 const AnnonceType = {
   "OFFER": "OFFER",
-  "DEMAND": "DEMAND"
+  "DEMAND": "DEMAND",
+  "QUESTION": "QUESTION"
+};
+
+const AnnonceStatus = {
+  "PENDING": "PENDING",
+  "VALIDATED": "VALIDATED"
 };
 
 const { Annonce } = initSchema(schema);
 
 export {
   Annonce,
-  AnnonceType
+  AnnonceType,
+  AnnonceStatus
 };

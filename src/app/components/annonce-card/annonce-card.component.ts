@@ -33,6 +33,12 @@ export class AnnonceCardComponent implements OnInit {
                 '../../../assets/icons/perm_identity_black_24dp.svg'
             )
         );
+        this.matIconRegistry.addSvgIcon(
+            `place`,
+            this.domSanitizer.bypassSecurityTrustResourceUrl(
+                '../../../assets/icons/place_black_24dp.svg'
+            )
+        );
     }
 
     ngOnInit(): void {

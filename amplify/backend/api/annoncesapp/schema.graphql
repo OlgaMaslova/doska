@@ -1,11 +1,17 @@
 enum AnnonceType {
   OFFER
   DEMAND
+  QUESTION
+}
+
+enum AnnonceStatus {
+  PENDING
+  VALIDATED
 }
 
 type Annonce @model @auth(rules: [{allow: public}]) {
   id: ID!
-  title: String
+  title: String!
   text: String
   contactName: String
   contactEmail: String
@@ -15,5 +21,7 @@ type Annonce @model @auth(rules: [{allow: public}]) {
   deletedAt: AWSTimestamp
   photos: [String]
   type: AnnonceType
+  location: String
+  status: AnnonceStatus @index(name: "byStatus", queryField: "annoncesByStatus")
 }
  
