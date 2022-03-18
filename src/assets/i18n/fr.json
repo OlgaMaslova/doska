@@ -1,0 +1,23 @@
+{
+    "Demands": "Demandes",
+    "Offers": "Offres",
+    "Questions": "Questions",
+    "demand": "demande",
+    "offer": "offre",
+    "question": "question",
+    "Add annonce": "Ajouter une annonce",
+    "Your name": "Votre nom",
+    "Title": "Titre",
+    "Type": "Type",
+    "Description": "Description",
+    "Location": "Lieu",
+    "Contact phone": "Téléphone",
+    "Your Email": "Votre Email",
+    "Cancel": "Annuler",
+    "Submit": "Envoyer",
+    "Email is required": "Email est requis",
+    "Please enter valid email": "Entrez un email valide",
+    "Title is required": "Titre est requis",
+    "Description is required": "Description est requis"
+
+}

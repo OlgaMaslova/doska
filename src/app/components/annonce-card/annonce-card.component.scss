@@ -8,8 +8,9 @@ img {
   .contact-container {
       display: flex;
       align-items: center;
-      height: 2rem;
-      justify-content: center;
+      min-height: 2rem;
+      flex-wrap: wrap;
+      padding-left: 5px;
 
       .contact-info {
           display: flex;

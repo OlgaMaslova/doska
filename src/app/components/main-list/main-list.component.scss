@@ -16,3 +16,14 @@
     }
   }
 }
+
+@media screen and (max-width: 500px) {
+  .list-container {
+    margin: 8px 5px;
+
+    .column {
+      width: 100%;
+      margin: 5px 0px;
+    }
+  }
+}

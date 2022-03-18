@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AnnonceService } from 'src/app/annonce.service';
-import { AnnonceType } from 'src/app/API.service';
+import { AnnonceStatus, AnnonceType } from 'src/app/API.service';
 import { Annonce } from 'src/app/types.service';
 import mock from 'src/assets/annonces.json';
 
@@ -25,7 +25,9 @@ export class MainListComponent implements OnInit {
     }
 
     async getAnnonces() {
-        const annonces = (await this.annonceService.getAnnonces()) as Annonce[];
+        const annonces = (await this.annonceService.getAnnoncesByStatus(
+            AnnonceStatus.VALIDATED
+        )) as Annonce[];
         this.annoncesOffer = annonces.filter(
             (annonce) => annonce.type === AnnonceType.OFFER
         );
@@ -36,4 +38,6 @@ export class MainListComponent implements OnInit {
             (annonce) => annonce.type === AnnonceType.QUESTION
         );
     }
+
+    async;
 }

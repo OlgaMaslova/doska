@@ -1,0 +1,11 @@
+<div>
+    <button mat-flat-button color="primary" (click)="signOut()">LOGOUT</button>
+</div>
+<div class="list-container">
+    <div class="column">
+        <div class="card-wrapper" *ngFor="let annonce of annonces">
+            <annonce-card [annonce]="annonce" [isAdmin]="true"></annonce-card>
+        </div>
+    </div>
+</div>
+

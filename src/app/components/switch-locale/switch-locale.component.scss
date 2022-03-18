@@ -1,0 +1,9 @@
+.btn-locale-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .locale-btn {
+        margin: 0px 3px;
+    }
+}

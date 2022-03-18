@@ -1,7 +1,8 @@
 <mat-card class="my-card">
     <mat-card-header class="card-header">
-      <mat-card-title>{{annonce.title}}</mat-card-title>
-      <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+      <mat-card-title>
+        <span *ngIf="annonce.status === 'VALIDATED' && isAdmin" matBadge="OK" matBadgeColor="accent"></span>{{annonce.title}}
+        </mat-card-title>
     </mat-card-header>
     <img [hidden]="!annonce.coverPhoto" mat-card-image [src]="annonce.coverPhoto" [alt]="annonce.title">
     <mat-card-content>
@@ -28,8 +29,8 @@
         
         </div>
     </mat-card-footer>
-    <!-- <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions> -->
+    <mat-card-actions *ngIf="isAdmin">
+      <button mat-button (click)="onValidate()" [disabled]="annonce.status === 'VALIDATED'">VALIDATE</button>
+      <button mat-button>REFUSE</button>
+    </mat-card-actions>
   </mat-card>

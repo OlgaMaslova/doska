@@ -1,11 +1,26 @@
+@use '@angular/material' as mat;
+$amber-palette: mat.define-palette(mat.$amber-palette);
+
 .header-container {
     h1 {
         margin-top: 0;
         margin-bottom: 0;
-        margin-right: 5rem;
+        font-size: 2rem;
     }
+    @media screen and (max-width: 500px) {
+        h1 {
+            font-size: 1rem;
+        }
+        .mat-flat-button {
+            padding: 0px 2px;
+        }
+    
+      }
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     padding: 0.5rem;
+    height: 3rem;
+    box-shadow: 0px 4px 10px 2px mat.get-color-from-palette($amber-palette, 800);
+
 }

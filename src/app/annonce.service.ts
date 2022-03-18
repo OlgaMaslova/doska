@@ -1,6 +1,11 @@
 /* eslint-disable class-methods-use-this */
 import { Injectable } from '@angular/core';
-import { APIService, CreateAnnonceInput } from './API.service';
+import {
+    AnnonceStatus,
+    APIService,
+    CreateAnnonceInput,
+    UpdateAnnonceInput
+} from './API.service';
 import { Annonce } from './types.service';
 
 @Injectable({
@@ -13,8 +18,11 @@ export class AnnonceService {
         return this.API.CreateAnnonce(input);
     }
 
-    async getAnnonces(): Promise<Annonce[] | null> {
-        const annonces = (await this.API.ListAnnonces()).items as Annonce[];
+    async getAnnoncesByStatus(
+        status: AnnonceStatus
+    ): Promise<Annonce[] | null> {
+        const annonces = (await this.API.AnnoncesByStatus(status))
+            .items as Annonce[];
         if (annonces) {
             for (const annonce of annonces) {
                 if (annonce.photos) {
@@ -24,5 +32,9 @@ export class AnnonceService {
             return annonces;
         }
         return null;
+    }
+
+    async updateAnnonce(input: UpdateAnnonceInput): Promise<Annonce> {
+        return this.API.UpdateAnnonce(input);
     }
 }

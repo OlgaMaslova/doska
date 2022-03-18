@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AnnonceService } from 'src/app/annonce.service';
+import { AnnonceStatus } from 'src/app/API.service';
 import { Annonce } from 'src/app/types.service';
 
 @Component({
@@ -11,9 +13,12 @@ import { Annonce } from 'src/app/types.service';
 export class AnnonceCardComponent implements OnInit {
     @Input() annonce: Annonce;
 
+    @Input() isAdmin: boolean = false;
+
     constructor(
         private matIconRegistry: MatIconRegistry,
-        private domSanitizer: DomSanitizer
+        private domSanitizer: DomSanitizer,
+        private annonceService: AnnonceService
     ) {
         this.matIconRegistry.addSvgIcon(
             `phone`,
@@ -41,9 +46,14 @@ export class AnnonceCardComponent implements OnInit {
         );
     }
 
-    ngOnInit(): void {
-        this.annonce.coverPhoto = this.annonce.photos
-            ? this.annonce.photos[0]
-            : null;
+    ngOnInit(): void {}
+
+    async onValidate() {
+        this.annonce = await this.annonceService.updateAnnonce({
+            id: this.annonce.id!,
+            status: AnnonceStatus.VALIDATED,
+            // eslint-disable-next-line no-underscore-dangle
+            _version: this.annonce._version
+        });
     }
 }
