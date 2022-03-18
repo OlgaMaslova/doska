@@ -1,7 +1,9 @@
 <mat-card class="my-card">
     <mat-card-header class="card-header">
       <mat-card-title>
-        <span *ngIf="annonce.status === 'VALIDATED' && isAdmin" matBadge="OK" matBadgeColor="accent"></span>{{annonce.title}}
+        <span *ngIf="annonce.status === 'VALIDATED' && isAdmin" matBadge="OK" matBadgeColor="accent"></span>
+        <span *ngIf="annonce.status === 'REFUSED' && isAdmin" matBadge="X" matBadgeColor="warn"></span>
+        {{annonce.title}}
         </mat-card-title>
     </mat-card-header>
     <img [hidden]="!annonce.coverPhoto" mat-card-image [src]="annonce.coverPhoto" [alt]="annonce.title">
@@ -31,6 +33,6 @@
     </mat-card-footer>
     <mat-card-actions *ngIf="isAdmin">
       <button mat-button (click)="onValidate()" [disabled]="annonce.status === 'VALIDATED'">VALIDATE</button>
-      <button mat-button>REFUSE</button>
+      <button mat-button (click)="onRefuse()" [disabled]="annonce.status === 'REFUSED'">REFUSE</button>
     </mat-card-actions>
   </mat-card>

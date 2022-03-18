@@ -40,7 +40,8 @@ export enum AnnonceType {
 
 export enum AnnonceStatus {
   PENDING = "PENDING",
-  VALIDATED = "VALIDATED"
+  VALIDATED = "VALIDATED",
+  REFUSED = "REFUSED"
 }
 
 export type ModelAnnonceConditionInput = {

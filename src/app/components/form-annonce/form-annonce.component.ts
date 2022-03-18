@@ -63,12 +63,14 @@ export class FormAnnonceComponent implements OnInit {
         try {
             if (input.photo) {
                 input.photos = [input.photo];
-                delete input.photo;
             }
-            await this.annonceService.createAnnonce(
+            delete input.photo;
+            const created = await this.annonceService.createAnnonce(
                 input as CreateAnnonceInput
             );
+            // console.log(created);
         } catch (e) {
+            alert('Erreur de validation');
             console.error(e);
         }
         this.onCancel();

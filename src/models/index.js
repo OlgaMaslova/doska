@@ -10,7 +10,8 @@ const AnnonceType = {
 
 const AnnonceStatus = {
   "PENDING": "PENDING",
-  "VALIDATED": "VALIDATED"
+  "VALIDATED": "VALIDATED",
+  "REFUSED": "REFUSED"
 };
 
 const { Annonce } = initSchema(schema);

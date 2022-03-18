@@ -7,6 +7,7 @@ enum AnnonceType {
 enum AnnonceStatus {
   PENDING
   VALIDATED
+  REFUSED
 }
 
 type Annonce @model @auth(rules: [{allow: public}]) {

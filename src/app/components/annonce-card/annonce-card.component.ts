@@ -56,4 +56,13 @@ export class AnnonceCardComponent implements OnInit {
             _version: this.annonce._version
         });
     }
+
+    async onRefuse() {
+        this.annonce = await this.annonceService.updateAnnonce({
+            id: this.annonce.id!,
+            status: AnnonceStatus.REFUSED,
+            // eslint-disable-next-line no-underscore-dangle
+            _version: this.annonce._version
+        });
+    }
 }

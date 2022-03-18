@@ -149,7 +149,8 @@ export const schema = {
             "name": "AnnonceStatus",
             "values": [
                 "PENDING",
-                "VALIDATED"
+                "VALIDATED",
+                "REFUSED"
             ]
         }
     },
