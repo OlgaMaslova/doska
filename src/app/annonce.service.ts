@@ -37,4 +37,12 @@ export class AnnonceService {
     async updateAnnonce(input: UpdateAnnonceInput): Promise<Annonce> {
         return this.API.UpdateAnnonce(input);
     }
+
+    async getAnnonce(id: string): Promise<Annonce> {
+        const annonce = (await this.API.GetAnnonce(id)) as Annonce;
+        if (annonce.photos) {
+            [annonce.coverPhoto] = annonce.photos;
+        }
+        return annonce;
+    }
 }

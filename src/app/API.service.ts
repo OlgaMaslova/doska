@@ -13,6 +13,9 @@ export type __SubscriptionContainer = {
   onCreateAnnonce: OnCreateAnnonceSubscription;
   onUpdateAnnonce: OnUpdateAnnonceSubscription;
   onDeleteAnnonce: OnDeleteAnnonceSubscription;
+  onCreateComment: OnCreateCommentSubscription;
+  onUpdateComment: OnUpdateCommentSubscription;
+  onDeleteComment: OnDeleteCommentSubscription;
 };
 
 export type CreateAnnonceInput = {
@@ -138,6 +141,29 @@ export type Annonce = {
   type?: AnnonceType | null;
   location?: string | null;
   status?: AnnonceStatus | null;
+  comments?: ModelCommentConnection | null;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type ModelCommentConnection = {
+  __typename: "ModelCommentConnection";
+  items: Array<Comment | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type Comment = {
+  __typename: "Comment";
+  id: string;
+  title?: string | null;
+  text?: string | null;
+  author?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+  deletedAt?: number | null;
+  annonceID: string;
   _version: number;
   _deleted?: boolean | null;
   _lastChangedAt: number;
@@ -165,6 +191,64 @@ export type DeleteAnnonceInput = {
   _version?: number | null;
 };
 
+export type CreateCommentInput = {
+  id?: string | null;
+  title?: string | null;
+  text?: string | null;
+  author?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+  deletedAt?: number | null;
+  annonceID: string;
+  _version?: number | null;
+};
+
+export type ModelCommentConditionInput = {
+  title?: ModelStringInput | null;
+  text?: ModelStringInput | null;
+  author?: ModelStringInput | null;
+  createdAt?: ModelStringInput | null;
+  updatedAt?: ModelStringInput | null;
+  deletedAt?: ModelIntInput | null;
+  annonceID?: ModelIDInput | null;
+  and?: Array<ModelCommentConditionInput | null> | null;
+  or?: Array<ModelCommentConditionInput | null> | null;
+  not?: ModelCommentConditionInput | null;
+};
+
+export type ModelIDInput = {
+  ne?: string | null;
+  eq?: string | null;
+  le?: string | null;
+  lt?: string | null;
+  ge?: string | null;
+  gt?: string | null;
+  contains?: string | null;
+  notContains?: string | null;
+  between?: Array<string | null> | null;
+  beginsWith?: string | null;
+  attributeExists?: boolean | null;
+  attributeType?: ModelAttributeTypes | null;
+  size?: ModelSizeInput | null;
+};
+
+export type UpdateCommentInput = {
+  id: string;
+  title?: string | null;
+  text?: string | null;
+  author?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+  deletedAt?: number | null;
+  annonceID?: string | null;
+  _version?: number | null;
+};
+
+export type DeleteCommentInput = {
+  id: string;
+  _version?: number | null;
+};
+
 export type ModelAnnonceFilterInput = {
   id?: ModelIDInput | null;
   title?: ModelStringInput | null;
@@ -184,22 +268,6 @@ export type ModelAnnonceFilterInput = {
   not?: ModelAnnonceFilterInput | null;
 };
 
-export type ModelIDInput = {
-  ne?: string | null;
-  eq?: string | null;
-  le?: string | null;
-  lt?: string | null;
-  ge?: string | null;
-  gt?: string | null;
-  contains?: string | null;
-  notContains?: string | null;
-  between?: Array<string | null> | null;
-  beginsWith?: string | null;
-  attributeExists?: boolean | null;
-  attributeType?: ModelAttributeTypes | null;
-  size?: ModelSizeInput | null;
-};
-
 export type ModelAnnonceConnection = {
   __typename: "ModelAnnonceConnection";
   items: Array<Annonce | null>;
@@ -211,6 +279,20 @@ export enum ModelSortDirection {
   ASC = "ASC",
   DESC = "DESC"
 }
+
+export type ModelCommentFilterInput = {
+  id?: ModelIDInput | null;
+  title?: ModelStringInput | null;
+  text?: ModelStringInput | null;
+  author?: ModelStringInput | null;
+  createdAt?: ModelStringInput | null;
+  updatedAt?: ModelStringInput | null;
+  deletedAt?: ModelIntInput | null;
+  annonceID?: ModelIDInput | null;
+  and?: Array<ModelCommentFilterInput | null> | null;
+  or?: Array<ModelCommentFilterInput | null> | null;
+  not?: ModelCommentFilterInput | null;
+};
 
 export type CreateAnnonceMutation = {
   __typename: "Annonce";
@@ -227,6 +309,11 @@ export type CreateAnnonceMutation = {
   type?: AnnonceType | null;
   location?: string | null;
   status?: AnnonceStatus | null;
+  comments?: {
+    __typename: "ModelCommentConnection";
+    nextToken?: string | null;
+    startedAt?: number | null;
+  } | null;
   _version: number;
   _deleted?: boolean | null;
   _lastChangedAt: number;
@@ -247,6 +334,11 @@ export type UpdateAnnonceMutation = {
   type?: AnnonceType | null;
   location?: string | null;
   status?: AnnonceStatus | null;
+  comments?: {
+    __typename: "ModelCommentConnection";
+    nextToken?: string | null;
+    startedAt?: number | null;
+  } | null;
   _version: number;
   _deleted?: boolean | null;
   _lastChangedAt: number;
@@ -267,6 +359,56 @@ export type DeleteAnnonceMutation = {
   type?: AnnonceType | null;
   location?: string | null;
   status?: AnnonceStatus | null;
+  comments?: {
+    __typename: "ModelCommentConnection";
+    nextToken?: string | null;
+    startedAt?: number | null;
+  } | null;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type CreateCommentMutation = {
+  __typename: "Comment";
+  id: string;
+  title?: string | null;
+  text?: string | null;
+  author?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+  deletedAt?: number | null;
+  annonceID: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type UpdateCommentMutation = {
+  __typename: "Comment";
+  id: string;
+  title?: string | null;
+  text?: string | null;
+  author?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+  deletedAt?: number | null;
+  annonceID: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type DeleteCommentMutation = {
+  __typename: "Comment";
+  id: string;
+  title?: string | null;
+  text?: string | null;
+  author?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+  deletedAt?: number | null;
+  annonceID: string;
   _version: number;
   _deleted?: boolean | null;
   _lastChangedAt: number;
@@ -287,6 +429,11 @@ export type GetAnnonceQuery = {
   type?: AnnonceType | null;
   location?: string | null;
   status?: AnnonceStatus | null;
+  comments?: {
+    __typename: "ModelCommentConnection";
+    nextToken?: string | null;
+    startedAt?: number | null;
+  } | null;
   _version: number;
   _deleted?: boolean | null;
   _lastChangedAt: number;
@@ -367,6 +514,61 @@ export type AnnoncesByStatusQuery = {
   startedAt?: number | null;
 };
 
+export type GetCommentQuery = {
+  __typename: "Comment";
+  id: string;
+  title?: string | null;
+  text?: string | null;
+  author?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+  deletedAt?: number | null;
+  annonceID: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type ListCommentsQuery = {
+  __typename: "ModelCommentConnection";
+  items: Array<{
+    __typename: "Comment";
+    id: string;
+    title?: string | null;
+    text?: string | null;
+    author?: string | null;
+    createdAt?: string | null;
+    updatedAt?: string | null;
+    deletedAt?: number | null;
+    annonceID: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
+export type SyncCommentsQuery = {
+  __typename: "ModelCommentConnection";
+  items: Array<{
+    __typename: "Comment";
+    id: string;
+    title?: string | null;
+    text?: string | null;
+    author?: string | null;
+    createdAt?: string | null;
+    updatedAt?: string | null;
+    deletedAt?: number | null;
+    annonceID: string;
+    _version: number;
+    _deleted?: boolean | null;
+    _lastChangedAt: number;
+  } | null>;
+  nextToken?: string | null;
+  startedAt?: number | null;
+};
+
 export type OnCreateAnnonceSubscription = {
   __typename: "Annonce";
   id: string;
@@ -382,6 +584,11 @@ export type OnCreateAnnonceSubscription = {
   type?: AnnonceType | null;
   location?: string | null;
   status?: AnnonceStatus | null;
+  comments?: {
+    __typename: "ModelCommentConnection";
+    nextToken?: string | null;
+    startedAt?: number | null;
+  } | null;
   _version: number;
   _deleted?: boolean | null;
   _lastChangedAt: number;
@@ -402,6 +609,11 @@ export type OnUpdateAnnonceSubscription = {
   type?: AnnonceType | null;
   location?: string | null;
   status?: AnnonceStatus | null;
+  comments?: {
+    __typename: "ModelCommentConnection";
+    nextToken?: string | null;
+    startedAt?: number | null;
+  } | null;
   _version: number;
   _deleted?: boolean | null;
   _lastChangedAt: number;
@@ -422,6 +634,56 @@ export type OnDeleteAnnonceSubscription = {
   type?: AnnonceType | null;
   location?: string | null;
   status?: AnnonceStatus | null;
+  comments?: {
+    __typename: "ModelCommentConnection";
+    nextToken?: string | null;
+    startedAt?: number | null;
+  } | null;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnCreateCommentSubscription = {
+  __typename: "Comment";
+  id: string;
+  title?: string | null;
+  text?: string | null;
+  author?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+  deletedAt?: number | null;
+  annonceID: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnUpdateCommentSubscription = {
+  __typename: "Comment";
+  id: string;
+  title?: string | null;
+  text?: string | null;
+  author?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+  deletedAt?: number | null;
+  annonceID: string;
+  _version: number;
+  _deleted?: boolean | null;
+  _lastChangedAt: number;
+};
+
+export type OnDeleteCommentSubscription = {
+  __typename: "Comment";
+  id: string;
+  title?: string | null;
+  text?: string | null;
+  author?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+  deletedAt?: number | null;
+  annonceID: string;
   _version: number;
   _deleted?: boolean | null;
   _lastChangedAt: number;
@@ -451,6 +713,11 @@ export class APIService {
           type
           location
           status
+          comments {
+            __typename
+            nextToken
+            startedAt
+          }
           _version
           _deleted
           _lastChangedAt
@@ -487,6 +754,11 @@ export class APIService {
           type
           location
           status
+          comments {
+            __typename
+            nextToken
+            startedAt
+          }
           _version
           _deleted
           _lastChangedAt
@@ -523,6 +795,11 @@ export class APIService {
           type
           location
           status
+          comments {
+            __typename
+            nextToken
+            startedAt
+          }
           _version
           _deleted
           _lastChangedAt
@@ -538,6 +815,99 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <DeleteAnnonceMutation>response.data.deleteAnnonce;
+  }
+  async CreateComment(
+    input: CreateCommentInput,
+    condition?: ModelCommentConditionInput
+  ): Promise<CreateCommentMutation> {
+    const statement = `mutation CreateComment($input: CreateCommentInput!, $condition: ModelCommentConditionInput) {
+        createComment(input: $input, condition: $condition) {
+          __typename
+          id
+          title
+          text
+          author
+          createdAt
+          updatedAt
+          deletedAt
+          annonceID
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateCommentMutation>response.data.createComment;
+  }
+  async UpdateComment(
+    input: UpdateCommentInput,
+    condition?: ModelCommentConditionInput
+  ): Promise<UpdateCommentMutation> {
+    const statement = `mutation UpdateComment($input: UpdateCommentInput!, $condition: ModelCommentConditionInput) {
+        updateComment(input: $input, condition: $condition) {
+          __typename
+          id
+          title
+          text
+          author
+          createdAt
+          updatedAt
+          deletedAt
+          annonceID
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateCommentMutation>response.data.updateComment;
+  }
+  async DeleteComment(
+    input: DeleteCommentInput,
+    condition?: ModelCommentConditionInput
+  ): Promise<DeleteCommentMutation> {
+    const statement = `mutation DeleteComment($input: DeleteCommentInput!, $condition: ModelCommentConditionInput) {
+        deleteComment(input: $input, condition: $condition) {
+          __typename
+          id
+          title
+          text
+          author
+          createdAt
+          updatedAt
+          deletedAt
+          annonceID
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteCommentMutation>response.data.deleteComment;
   }
   async GetAnnonce(id: string): Promise<GetAnnonceQuery> {
     const statement = `query GetAnnonce($id: ID!) {
@@ -556,6 +926,11 @@ export class APIService {
           type
           location
           status
+          comments {
+            __typename
+            nextToken
+            startedAt
+          }
           _version
           _deleted
           _lastChangedAt
@@ -718,6 +1093,117 @@ export class APIService {
     )) as any;
     return <AnnoncesByStatusQuery>response.data.annoncesByStatus;
   }
+  async GetComment(id: string): Promise<GetCommentQuery> {
+    const statement = `query GetComment($id: ID!) {
+        getComment(id: $id) {
+          __typename
+          id
+          title
+          text
+          author
+          createdAt
+          updatedAt
+          deletedAt
+          annonceID
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetCommentQuery>response.data.getComment;
+  }
+  async ListComments(
+    filter?: ModelCommentFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListCommentsQuery> {
+    const statement = `query ListComments($filter: ModelCommentFilterInput, $limit: Int, $nextToken: String) {
+        listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            title
+            text
+            author
+            createdAt
+            updatedAt
+            deletedAt
+            annonceID
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListCommentsQuery>response.data.listComments;
+  }
+  async SyncComments(
+    filter?: ModelCommentFilterInput,
+    limit?: number,
+    nextToken?: string,
+    lastSync?: number
+  ): Promise<SyncCommentsQuery> {
+    const statement = `query SyncComments($filter: ModelCommentFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+        syncComments(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+          __typename
+          items {
+            __typename
+            id
+            title
+            text
+            author
+            createdAt
+            updatedAt
+            deletedAt
+            annonceID
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    if (lastSync) {
+      gqlAPIServiceArguments.lastSync = lastSync;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <SyncCommentsQuery>response.data.syncComments;
+  }
   OnCreateAnnonceListener: Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateAnnonce">>
   > = API.graphql(
@@ -738,6 +1224,11 @@ export class APIService {
           type
           location
           status
+          comments {
+            __typename
+            nextToken
+            startedAt
+          }
           _version
           _deleted
           _lastChangedAt
@@ -768,6 +1259,11 @@ export class APIService {
           type
           location
           status
+          comments {
+            __typename
+            nextToken
+            startedAt
+          }
           _version
           _deleted
           _lastChangedAt
@@ -798,6 +1294,11 @@ export class APIService {
           type
           location
           status
+          comments {
+            __typename
+            nextToken
+            startedAt
+          }
           _version
           _deleted
           _lastChangedAt
@@ -806,5 +1307,80 @@ export class APIService {
     )
   ) as Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteAnnonce">>
+  >;
+
+  OnCreateCommentListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateComment">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnCreateComment {
+        onCreateComment {
+          __typename
+          id
+          title
+          text
+          author
+          createdAt
+          updatedAt
+          deletedAt
+          annonceID
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateComment">>
+  >;
+
+  OnUpdateCommentListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateComment">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdateComment {
+        onUpdateComment {
+          __typename
+          id
+          title
+          text
+          author
+          createdAt
+          updatedAt
+          deletedAt
+          annonceID
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateComment">>
+  >;
+
+  OnDeleteCommentListener: Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteComment">>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnDeleteComment {
+        onDeleteComment {
+          __typename
+          id
+          title
+          text
+          author
+          createdAt
+          updatedAt
+          deletedAt
+          annonceID
+          _version
+          _deleted
+          _lastChangedAt
+        }
+      }`
+    )
+  ) as Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteComment">>
   >;
 }

@@ -14,10 +14,11 @@ const AnnonceStatus = {
   "REFUSED": "REFUSED"
 };
 
-const { Annonce } = initSchema(schema);
+const { Annonce, Comment } = initSchema(schema);
 
 export {
   Annonce,
+  Comment,
   AnnonceType,
   AnnonceStatus
 };

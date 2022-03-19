@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
     styleUrls: ['./switch-locale.component.scss']
 })
 export class SwitchLocaleComponent implements OnInit {
-    constructor(private translate: TranslateService) {}
+    constructor(public translate: TranslateService) {}
 
     ngOnInit(): void {}
 

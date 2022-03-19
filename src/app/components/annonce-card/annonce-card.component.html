@@ -1,18 +1,22 @@
-<mat-card class="my-card">
+<mat-card class="my-card" [routerLink]="annonce.id">
     <mat-card-header class="card-header">
-      <mat-card-title>
-        <span *ngIf="annonce.status === 'VALIDATED' && isAdmin" matBadge="OK" matBadgeColor="accent"></span>
-        <span *ngIf="annonce.status === 'REFUSED' && isAdmin" matBadge="X" matBadgeColor="warn"></span>
-        {{annonce.title}}
+        <mat-card-title>
+            <span *ngIf="annonce.status === 'VALIDATED' && isAdmin" matBadge="OK" matBadgeColor="accent"></span>
+            <span *ngIf="annonce.status === 'REFUSED' && isAdmin" matBadge="X" matBadgeColor="warn"></span>
+            {{annonce.title}}
         </mat-card-title>
+        <mat-card-subtitle>
+            {{annonce.createdAt! | localizedDate | async}}
+        </mat-card-subtitle>
     </mat-card-header>
-    <img [hidden]="!annonce.coverPhoto" mat-card-image [src]="annonce.coverPhoto" [alt]="annonce.title">
     <mat-card-content>
         <p>{{annonce.text}}</p>
     </mat-card-content>
+
+    <img [hidden]="!annonce.coverPhoto" mat-card-image [src]="annonce.coverPhoto" [alt]="annonce.title">
     <mat-card-footer >
         <div class="contact-container">
-            <div *ngIf="annonce.contactName" class="contact-info"> 
+            <div *ngIf="annonce.contactName" class="contact-info">
                 <mat-icon svgIcon="person" aria-hidden="false"></mat-icon>
                 {{annonce.contactName}}
             </div>

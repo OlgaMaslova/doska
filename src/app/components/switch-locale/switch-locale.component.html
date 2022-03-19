@@ -1,5 +1,8 @@
 <div class="btn-locale-container">
-    <button mat-mini-fab color="primary" class="locale-btn" (click)="onLocaleClick('ua')">UA</button>
-    <button mat-mini-fab color="primary" class="locale-btn" (click)="onLocaleClick('ru')">RU</button>
-    <button mat-mini-fab color="primary" class="locale-btn" (click)="onLocaleClick('fr')">FR</button>
+    <button mat-mini-fab color="primary" class="locale-btn"
+    [ngClass]="translate.currentLang === 'ua' ? 'selected' : ''" (click)="onLocaleClick('ua')">UA</button>
+    <button mat-mini-fab color="primary" class="locale-btn"
+    [ngClass]="translate.currentLang === 'ru' ? 'selected' : ''" (click)="onLocaleClick('ru')">RU</button>
+    <button mat-mini-fab color="primary" class="locale-btn" 
+    [ngClass]="translate.currentLang === 'fr' ? 'selected' : ''" (click)="onLocaleClick('fr')">FR</button>
 </div>

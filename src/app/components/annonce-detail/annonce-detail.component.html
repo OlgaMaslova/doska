@@ -1,0 +1,39 @@
+<div class="detail-container" *ngIf="annonce">
+    <div class="detail-wrapper">
+        <div class="detail-contact-container">
+            <div *ngIf="annonce.contactName" class="contact-info"> 
+                {{annonce.contactName}}
+            </div>
+            <div *ngIf="annonce.contactPhone" class="contact-info"> 
+                {{annonce.contactPhone}}
+            </div>
+            <div *ngIf="annonce.contactEmail" class="contact-info"> 
+                {{annonce.contactEmail}}
+            </div>
+            <div *ngIf="annonce.location" class="contact-info"> 
+                {{annonce.location}}
+            </div>
+            {{annonce.createdAt! | localizedDate:'short_date_time' | async }}
+        </div>
+        <h2>{{annonce.title}}</h2>
+        <div class="content">{{annonce.text}}</div>
+        <div class="photo" *ngIf="annonce.coverPhoto">
+            <img [src]="annonce.coverPhoto" [alt]="annonce.title">
+        </div>
+        
+    </div>
+    <div class="input-container">
+        <h3>{{'Leave a comment' |translate}}</h3>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>{{'Your name' | translate}}</mat-label>
+            <input matInput placeholder="Alex">
+          </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>{{'Your comment' |translate}}</mat-label>
+            <textarea matInput placeholder="{{'Your comment' |translate}}"></textarea>
+        </mat-form-field>
+
+        <button mat-flat-button color="primary">{{'Send' | translate}}</button>
+    </div>
+    
+</div>

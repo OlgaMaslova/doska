@@ -14,6 +14,10 @@ subscription OnCreateAnnonce {
     type
     location
     status
+    comments {
+      nextToken
+      startedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -34,6 +38,10 @@ subscription OnUpdateAnnonce {
     type
     location
     status
+    comments {
+      nextToken
+      startedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -54,6 +62,55 @@ subscription OnDeleteAnnonce {
     type
     location
     status
+    comments {
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateComment {
+  onCreateComment {
+    id
+    title
+    text
+    author
+    createdAt
+    updatedAt
+    deletedAt
+    annonceID
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateComment {
+  onUpdateComment {
+    id
+    title
+    text
+    author
+    createdAt
+    updatedAt
+    deletedAt
+    annonceID
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteComment {
+  onDeleteComment {
+    id
+    title
+    text
+    author
+    createdAt
+    updatedAt
+    deletedAt
+    annonceID
     _version
     _deleted
     _lastChangedAt

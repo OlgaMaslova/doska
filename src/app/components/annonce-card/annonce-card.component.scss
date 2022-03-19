@@ -1,3 +1,7 @@
+.my-card {
+    cursor: pointer;
+}
+
 img {
     height: fit-content; //so that it takes up full space
     max-height: 200px !important; // this prevents the image from being extremely big
@@ -5,15 +9,15 @@ img {
     object-position: center; /* this centers and crops the image so that it doesn't break the aspect ratio */
 }
 
-  .contact-container {
-      display: flex;
-      align-items: center;
-      min-height: 2rem;
-      flex-wrap: wrap;
-      padding-left: 5px;
+.contact-container {
+    display: flex;
+    align-items: center;
+    min-height: 2rem;
+    flex-wrap: wrap;
+    padding-left: 5px;
 
-      .contact-info {
-          display: flex;
-          margin-right: 1rem;
-      }
-  }
+    .contact-info {
+        display: flex;
+        margin-right: 1rem;
+    }
+}

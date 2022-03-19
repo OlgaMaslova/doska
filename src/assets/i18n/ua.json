@@ -18,5 +18,8 @@
     "Email is required": "Электронная почта обязательна",
     "Please enter valid email": "Пожалуйста, введите правильный адрес электронной почты",
     "Title is required": "Заголовок обязателен",
-    "Description is required": "Описание обязательно"
+    "Description is required": "Описание обязательно",
+    "Leave a comment": "Написать комментарий",
+    "Your comment": "Ваш комментарий",
+    "Send": "Отправить"
 }

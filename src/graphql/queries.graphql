@@ -14,6 +14,10 @@ query GetAnnonce($id: ID!) {
     type
     location
     status
+    comments {
+      nextToken
+      startedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -109,6 +113,73 @@ query AnnoncesByStatus(
       type
       location
       status
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetComment($id: ID!) {
+  getComment(id: $id) {
+    id
+    title
+    text
+    author
+    createdAt
+    updatedAt
+    deletedAt
+    annonceID
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListComments(
+  $filter: ModelCommentFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      title
+      text
+      author
+      createdAt
+      updatedAt
+      deletedAt
+      annonceID
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncComments(
+  $filter: ModelCommentFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncComments(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      title
+      text
+      author
+      createdAt
+      updatedAt
+      deletedAt
+      annonceID
       _version
       _deleted
       _lastChangedAt

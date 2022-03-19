@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 import { AnnonceService } from 'src/app/annonce.service';
 import { AnnonceStatus } from 'src/app/API.service';
 import { Annonce } from 'src/app/types.service';
@@ -18,7 +19,8 @@ export class AnnonceCardComponent implements OnInit {
     constructor(
         private matIconRegistry: MatIconRegistry,
         private domSanitizer: DomSanitizer,
-        private annonceService: AnnonceService
+        private annonceService: AnnonceService,
+        private translate: TranslateService
     ) {
         this.matIconRegistry.addSvgIcon(
             `phone`,

@@ -17,6 +17,10 @@ mutation CreateAnnonce(
     type
     location
     status
+    comments {
+      nextToken
+      startedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -40,6 +44,10 @@ mutation UpdateAnnonce(
     type
     location
     status
+    comments {
+      nextToken
+      startedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -63,6 +71,64 @@ mutation DeleteAnnonce(
     type
     location
     status
+    comments {
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateComment(
+  $input: CreateCommentInput!
+  $condition: ModelCommentConditionInput
+) {
+  createComment(input: $input, condition: $condition) {
+    id
+    title
+    text
+    author
+    createdAt
+    updatedAt
+    deletedAt
+    annonceID
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateComment(
+  $input: UpdateCommentInput!
+  $condition: ModelCommentConditionInput
+) {
+  updateComment(input: $input, condition: $condition) {
+    id
+    title
+    text
+    author
+    createdAt
+    updatedAt
+    deletedAt
+    annonceID
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteComment(
+  $input: DeleteCommentInput!
+  $condition: ModelCommentConditionInput
+) {
+  deleteComment(input: $input, condition: $condition) {
+    id
+    title
+    text
+    author
+    createdAt
+    updatedAt
+    deletedAt
+    annonceID
     _version
     _deleted
     _lastChangedAt

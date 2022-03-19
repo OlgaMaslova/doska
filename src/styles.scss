@@ -11,8 +11,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 $my-palette: mat.define-palette(mat.$indigo-palette);
 $amber-palette: mat.define-palette(mat.$amber-palette);
+$teal-palette: mat.define-palette(mat.$teal-palette);
 .my-card {
-  background-color: mat.get-color-from-palette($amber-palette, 100);
+  background-color: mat.get-color-from-palette($teal-palette, 50);
   color: mat.get-color-from-palette($amber-palette, 100-contrast);
 }
 
@@ -28,7 +29,7 @@ $amber-palette: mat.define-palette(mat.$amber-palette);
 }
 
 .header-container {
-  background-color: mat.get-color-from-palette($amber-palette, 700);
+  background-color: mat.get-color-from-palette($teal-palette, 400);
   color: mat.get-color-from-palette($my-palette, 700);
 }
 

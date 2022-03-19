@@ -24,5 +24,17 @@ type Annonce @model @auth(rules: [{allow: public}]) {
   type: AnnonceType
   location: String
   status: AnnonceStatus @index(name: "byStatus", queryField: "annoncesByStatus")
+  comments: [Comment] @hasMany(indexName: "byAnnonce", fields: ["id"])
+}
+
+type Comment @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  text: String
+  author: String
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+  deletedAt: AWSTimestamp
+  annonceID: ID! @index(name: "byAnnonce", sortKeyFields: ["createdAt"])
 }
  

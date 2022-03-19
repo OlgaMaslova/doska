@@ -15,16 +15,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainListComponent } from './components/main-list/main-list.component';
-import { LayoutComponent } from './components/layout/layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AnnonceCardComponent } from './components/annonce-card/annonce-card.component';
 import { FormAnnonceComponent } from './components/form-annonce/form-annonce.component';
 import { SwitchLocaleComponent } from './components/switch-locale/switch-locale.component';
 import { ConnectionComponent } from './components/connection/connection.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { LocalizedDatePipe } from './pipes/localized-date.pipe';
+import { AnnonceDetailComponent } from './components/annonce-detail/annonce-detail.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -34,15 +36,17 @@ export function HttpLoaderFactory(http: HttpClient) {
     declarations: [
         AppComponent,
         MainListComponent,
-        LayoutComponent,
         HeaderComponent,
         AnnonceCardComponent,
         FormAnnonceComponent,
         SwitchLocaleComponent,
         ConnectionComponent,
-        AdminDashboardComponent
+        AdminDashboardComponent,
+        LocalizedDatePipe,
+        AnnonceDetailComponent
     ],
     imports: [
+        CommonModule,
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
