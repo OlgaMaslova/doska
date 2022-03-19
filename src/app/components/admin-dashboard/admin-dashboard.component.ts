@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnnonceService } from 'src/app/annonce.service';
 import { AnnonceStatus } from 'src/app/API.service';
-import { Annonce } from 'src/app/types.service';
+import { ExtendedAnnonce } from 'src/app/types.service';
 import { Auth } from 'aws-amplify';
 
 @Component({
@@ -11,7 +11,7 @@ import { Auth } from 'aws-amplify';
     styleUrls: ['./admin-dashboard.component.scss']
 })
 export class AdminDashboardComponent implements OnInit {
-    annonces: Annonce[];
+    annonces: ExtendedAnnonce[];
 
     constructor(
         private annonceService: AnnonceService,
@@ -25,7 +25,7 @@ export class AdminDashboardComponent implements OnInit {
     async getAnnonces() {
         this.annonces = (await this.annonceService.getAnnoncesByStatus(
             AnnonceStatus.PENDING
-        )) as Annonce[];
+        )) as ExtendedAnnonce[];
     }
 
     async signOut() {

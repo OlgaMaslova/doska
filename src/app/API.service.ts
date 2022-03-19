@@ -311,6 +311,20 @@ export type CreateAnnonceMutation = {
   status?: AnnonceStatus | null;
   comments?: {
     __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      title?: string | null;
+      text?: string | null;
+      author?: string | null;
+      createdAt?: string | null;
+      updatedAt?: string | null;
+      deletedAt?: number | null;
+      annonceID: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null>;
     nextToken?: string | null;
     startedAt?: number | null;
   } | null;
@@ -336,6 +350,20 @@ export type UpdateAnnonceMutation = {
   status?: AnnonceStatus | null;
   comments?: {
     __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      title?: string | null;
+      text?: string | null;
+      author?: string | null;
+      createdAt?: string | null;
+      updatedAt?: string | null;
+      deletedAt?: number | null;
+      annonceID: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null>;
     nextToken?: string | null;
     startedAt?: number | null;
   } | null;
@@ -361,6 +389,20 @@ export type DeleteAnnonceMutation = {
   status?: AnnonceStatus | null;
   comments?: {
     __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      title?: string | null;
+      text?: string | null;
+      author?: string | null;
+      createdAt?: string | null;
+      updatedAt?: string | null;
+      deletedAt?: number | null;
+      annonceID: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null>;
     nextToken?: string | null;
     startedAt?: number | null;
   } | null;
@@ -431,6 +473,20 @@ export type GetAnnonceQuery = {
   status?: AnnonceStatus | null;
   comments?: {
     __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      title?: string | null;
+      text?: string | null;
+      author?: string | null;
+      createdAt?: string | null;
+      updatedAt?: string | null;
+      deletedAt?: number | null;
+      annonceID: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null>;
     nextToken?: string | null;
     startedAt?: number | null;
   } | null;
@@ -456,6 +512,11 @@ export type ListAnnoncesQuery = {
     type?: AnnonceType | null;
     location?: string | null;
     status?: AnnonceStatus | null;
+    comments?: {
+      __typename: "ModelCommentConnection";
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
     _version: number;
     _deleted?: boolean | null;
     _lastChangedAt: number;
@@ -481,6 +542,11 @@ export type SyncAnnoncesQuery = {
     type?: AnnonceType | null;
     location?: string | null;
     status?: AnnonceStatus | null;
+    comments?: {
+      __typename: "ModelCommentConnection";
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
     _version: number;
     _deleted?: boolean | null;
     _lastChangedAt: number;
@@ -506,6 +572,11 @@ export type AnnoncesByStatusQuery = {
     type?: AnnonceType | null;
     location?: string | null;
     status?: AnnonceStatus | null;
+    comments?: {
+      __typename: "ModelCommentConnection";
+      nextToken?: string | null;
+      startedAt?: number | null;
+    } | null;
     _version: number;
     _deleted?: boolean | null;
     _lastChangedAt: number;
@@ -586,6 +657,20 @@ export type OnCreateAnnonceSubscription = {
   status?: AnnonceStatus | null;
   comments?: {
     __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      title?: string | null;
+      text?: string | null;
+      author?: string | null;
+      createdAt?: string | null;
+      updatedAt?: string | null;
+      deletedAt?: number | null;
+      annonceID: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null>;
     nextToken?: string | null;
     startedAt?: number | null;
   } | null;
@@ -611,6 +696,20 @@ export type OnUpdateAnnonceSubscription = {
   status?: AnnonceStatus | null;
   comments?: {
     __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      title?: string | null;
+      text?: string | null;
+      author?: string | null;
+      createdAt?: string | null;
+      updatedAt?: string | null;
+      deletedAt?: number | null;
+      annonceID: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null>;
     nextToken?: string | null;
     startedAt?: number | null;
   } | null;
@@ -636,6 +735,20 @@ export type OnDeleteAnnonceSubscription = {
   status?: AnnonceStatus | null;
   comments?: {
     __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      title?: string | null;
+      text?: string | null;
+      author?: string | null;
+      createdAt?: string | null;
+      updatedAt?: string | null;
+      deletedAt?: number | null;
+      annonceID: string;
+      _version: number;
+      _deleted?: boolean | null;
+      _lastChangedAt: number;
+    } | null>;
     nextToken?: string | null;
     startedAt?: number | null;
   } | null;
@@ -715,6 +828,20 @@ export class APIService {
           status
           comments {
             __typename
+            items {
+              __typename
+              id
+              title
+              text
+              author
+              createdAt
+              updatedAt
+              deletedAt
+              annonceID
+              _version
+              _deleted
+              _lastChangedAt
+            }
             nextToken
             startedAt
           }
@@ -756,6 +883,20 @@ export class APIService {
           status
           comments {
             __typename
+            items {
+              __typename
+              id
+              title
+              text
+              author
+              createdAt
+              updatedAt
+              deletedAt
+              annonceID
+              _version
+              _deleted
+              _lastChangedAt
+            }
             nextToken
             startedAt
           }
@@ -797,6 +938,20 @@ export class APIService {
           status
           comments {
             __typename
+            items {
+              __typename
+              id
+              title
+              text
+              author
+              createdAt
+              updatedAt
+              deletedAt
+              annonceID
+              _version
+              _deleted
+              _lastChangedAt
+            }
             nextToken
             startedAt
           }
@@ -928,6 +1083,20 @@ export class APIService {
           status
           comments {
             __typename
+            items {
+              __typename
+              id
+              title
+              text
+              author
+              createdAt
+              updatedAt
+              deletedAt
+              annonceID
+              _version
+              _deleted
+              _lastChangedAt
+            }
             nextToken
             startedAt
           }
@@ -967,6 +1136,11 @@ export class APIService {
             type
             location
             status
+            comments {
+              __typename
+              nextToken
+              startedAt
+            }
             _version
             _deleted
             _lastChangedAt
@@ -1014,6 +1188,11 @@ export class APIService {
             type
             location
             status
+            comments {
+              __typename
+              nextToken
+              startedAt
+            }
             _version
             _deleted
             _lastChangedAt
@@ -1065,6 +1244,11 @@ export class APIService {
             type
             location
             status
+            comments {
+              __typename
+              nextToken
+              startedAt
+            }
             _version
             _deleted
             _lastChangedAt
@@ -1226,6 +1410,20 @@ export class APIService {
           status
           comments {
             __typename
+            items {
+              __typename
+              id
+              title
+              text
+              author
+              createdAt
+              updatedAt
+              deletedAt
+              annonceID
+              _version
+              _deleted
+              _lastChangedAt
+            }
             nextToken
             startedAt
           }
@@ -1261,6 +1459,20 @@ export class APIService {
           status
           comments {
             __typename
+            items {
+              __typename
+              id
+              title
+              text
+              author
+              createdAt
+              updatedAt
+              deletedAt
+              annonceID
+              _version
+              _deleted
+              _lastChangedAt
+            }
             nextToken
             startedAt
           }
@@ -1296,6 +1508,20 @@ export class APIService {
           status
           comments {
             __typename
+            items {
+              __typename
+              id
+              title
+              text
+              author
+              createdAt
+              updatedAt
+              deletedAt
+              annonceID
+              _version
+              _deleted
+              _lastChangedAt
+            }
             nextToken
             startedAt
           }

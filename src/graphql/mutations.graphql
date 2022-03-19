@@ -18,6 +18,19 @@ mutation CreateAnnonce(
     location
     status
     comments {
+      items {
+        id
+        title
+        text
+        author
+        createdAt
+        updatedAt
+        deletedAt
+        annonceID
+        _version
+        _deleted
+        _lastChangedAt
+      }
       nextToken
       startedAt
     }
@@ -45,6 +58,19 @@ mutation UpdateAnnonce(
     location
     status
     comments {
+      items {
+        id
+        title
+        text
+        author
+        createdAt
+        updatedAt
+        deletedAt
+        annonceID
+        _version
+        _deleted
+        _lastChangedAt
+      }
       nextToken
       startedAt
     }
@@ -72,6 +98,19 @@ mutation DeleteAnnonce(
     location
     status
     comments {
+      items {
+        id
+        title
+        text
+        author
+        createdAt
+        updatedAt
+        deletedAt
+        annonceID
+        _version
+        _deleted
+        _lastChangedAt
+      }
       nextToken
       startedAt
     }

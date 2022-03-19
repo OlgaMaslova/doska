@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AnnonceService } from 'src/app/annonce.service';
 import { AnnonceStatus, AnnonceType } from 'src/app/API.service';
-import { Annonce } from 'src/app/types.service';
-import mock from 'src/assets/annonces.json';
+import { ExtendedAnnonce } from 'src/app/types.service';
 
 @Component({
     selector: 'app-main-list',
@@ -10,13 +9,13 @@ import mock from 'src/assets/annonces.json';
     styleUrls: ['./main-list.component.scss']
 })
 export class MainListComponent implements OnInit {
-    annonces: Annonce[] = mock;
+    annonces: ExtendedAnnonce[] = [];
 
-    annoncesSeek: Annonce[] = [];
+    annoncesSeek: ExtendedAnnonce[] = [];
 
-    annoncesOffer: Annonce[] = [];
+    annoncesOffer: ExtendedAnnonce[] = [];
 
-    questions: Annonce[] = [];
+    questions: ExtendedAnnonce[] = [];
 
     constructor(private annonceService: AnnonceService) {}
 
@@ -27,7 +26,7 @@ export class MainListComponent implements OnInit {
     async getAnnonces() {
         const annonces = (await this.annonceService.getAnnoncesByStatus(
             AnnonceStatus.VALIDATED
-        )) as Annonce[];
+        )) as ExtendedAnnonce[];
         this.annoncesOffer = annonces.filter(
             (annonce) => annonce.type === AnnonceType.OFFER
         );
@@ -38,6 +37,4 @@ export class MainListComponent implements OnInit {
             (annonce) => annonce.type === AnnonceType.QUESTION
         );
     }
-
-    async;
 }

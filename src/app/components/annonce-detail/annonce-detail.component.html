@@ -24,16 +24,37 @@
     </div>
     <div class="input-container">
         <h3>{{'Leave a comment' |translate}}</h3>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>{{'Your name' | translate}}</mat-label>
-            <input matInput placeholder="Alex">
-          </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>{{'Your comment' |translate}}</mat-label>
-            <textarea matInput placeholder="{{'Your comment' |translate}}"></textarea>
-        </mat-form-field>
-
-        <button mat-flat-button color="primary">{{'Send' | translate}}</button>
+        <form [formGroup]="commentForm" >
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>{{'Your name' | translate}}</mat-label>
+                <input matInput placeholder="Alex" formControlName="author">
+              </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>{{'Your comment' |translate}}</mat-label>
+                <textarea matInput placeholder="{{'Your comment' |translate}}" formControlName="text"></textarea>
+            </mat-form-field>
+            <button mat-flat-button color="primary" type="button" (click)="onComment()">{{'Send' | translate}}</button>
+        </form>
+        
     </div>
-    
+    <div class="comments-container">
+        <div *ngIf="annonce.comments!.items.length === 0">
+            <h3>{{'No comments'|translate}}</h3>
+        </div>
+        <div *ngIf="annonce.comments!.items.length === 1">
+            <h3>1 {{'comment' | translate}}</h3>
+        </div>
+        <div *ngIf="annonce.comments!.items.length > 1">
+            <h3>{{annonce.comments!.items.length}} {{'comments' | translate}}</h3>
+        </div>
+        <div *ngFor="let comment of annonce.comments!.items">
+            <div class="comment-container">
+                <div class="comment-header">
+                    <div class="comment-author">{{comment!.author}}</div>
+                    <div class="comment-date">{{comment!.createdAt! | localizedDate:'short_date_time' | async}}</div>
+                </div>
+                <div class="comment-content">{{comment!.text}}</div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { throws } from 'assert';
 import { AnnonceService } from 'src/app/annonce.service';
-import { Annonce } from 'src/app/types.service';
+import { ExtendedAnnonce } from 'src/app/types.service';
 
 @Component({
     selector: 'app-annonce-detail',
@@ -11,11 +13,14 @@ import { Annonce } from 'src/app/types.service';
 export class AnnonceDetailComponent implements OnInit {
     annonceID: string;
 
-    annonce: Annonce;
+    annonce: ExtendedAnnonce;
+
+    commentForm: FormGroup;
 
     constructor(
         private route: ActivatedRoute,
-        private annonceService: AnnonceService
+        private annonceService: AnnonceService,
+        private fb: FormBuilder
     ) {}
 
     ngOnInit(): void {
@@ -25,6 +30,10 @@ export class AnnonceDetailComponent implements OnInit {
                 this.setAnnonce();
             }
         });
+        this.commentForm = this.fb.group({
+            author: [null, [Validators.required]],
+            text: [null, [Validators.required]]
+        });
     }
 
     async setAnnonce() {
@@ -33,5 +42,17 @@ export class AnnonceDetailComponent implements OnInit {
         });
     }
 
-    onComment() {}
+    async onComment() {
+        if (!this.commentForm.valid) {
+            return;
+        }
+        const input = this.commentForm.value;
+        input.annonceID = this.annonceID;
+        const createdComment = await this.annonceService.createComment(input);
+        if (createdComment) {
+            console.log(createdComment);
+            this.annonce.comments!.items.push(createdComment);
+        }
+        this.commentForm.reset();
+    }
 }

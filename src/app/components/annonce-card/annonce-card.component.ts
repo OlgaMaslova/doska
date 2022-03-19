@@ -4,7 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { AnnonceService } from 'src/app/annonce.service';
 import { AnnonceStatus } from 'src/app/API.service';
-import { Annonce } from 'src/app/types.service';
+import { ExtendedAnnonce } from 'src/app/types.service';
 
 @Component({
     selector: 'annonce-card',
@@ -12,7 +12,7 @@ import { Annonce } from 'src/app/types.service';
     styleUrls: ['./annonce-card.component.scss']
 })
 export class AnnonceCardComponent implements OnInit {
-    @Input() annonce: Annonce;
+    @Input() annonce: ExtendedAnnonce;
 
     @Input() isAdmin: boolean = false;
 

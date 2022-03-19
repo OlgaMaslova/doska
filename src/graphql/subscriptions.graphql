@@ -15,6 +15,19 @@ subscription OnCreateAnnonce {
     location
     status
     comments {
+      items {
+        id
+        title
+        text
+        author
+        createdAt
+        updatedAt
+        deletedAt
+        annonceID
+        _version
+        _deleted
+        _lastChangedAt
+      }
       nextToken
       startedAt
     }
@@ -39,6 +52,19 @@ subscription OnUpdateAnnonce {
     location
     status
     comments {
+      items {
+        id
+        title
+        text
+        author
+        createdAt
+        updatedAt
+        deletedAt
+        annonceID
+        _version
+        _deleted
+        _lastChangedAt
+      }
       nextToken
       startedAt
     }
@@ -63,6 +89,19 @@ subscription OnDeleteAnnonce {
     location
     status
     comments {
+      items {
+        id
+        title
+        text
+        author
+        createdAt
+        updatedAt
+        deletedAt
+        annonceID
+        _version
+        _deleted
+        _lastChangedAt
+      }
       nextToken
       startedAt
     }

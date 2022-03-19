@@ -1,11 +1,10 @@
-import { CreateAnnonceInput } from './API.service';
+import { Annonce } from './API.service';
 
 export type AWSType = {
     _deleted?: boolean | null;
     _lastChangedAt: number;
 };
 
-export type Annonce = {
+export type ExtendedAnnonce = {
     coverPhoto?: string | null | undefined;
-} & CreateAnnonceInput &
-    AWSType;
+} & Annonce;

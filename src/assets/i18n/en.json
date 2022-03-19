@@ -21,6 +21,9 @@
     "Description is required": "Description is required",
     "Leave a comment": "Leave a comment",
     "Your comment": "Your comment",
-    "Send": "Send"
+    "Send": "Send",
+    "No comments": "No comments",
+    "comment": "comment",
+    "comments": "comments"
 
 }
