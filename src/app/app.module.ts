@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -27,6 +28,7 @@ import { ConnectionComponent } from './components/connection/connection.componen
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { LocalizedDatePipe } from './pipes/localized-date.pipe';
 import { AnnonceDetailComponent } from './components/annonce-detail/annonce-detail.component';
+import { AnnonceCreatedComponent } from './components/annonce-created/annonce-created.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -43,7 +45,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         ConnectionComponent,
         AdminDashboardComponent,
         LocalizedDatePipe,
-        AnnonceDetailComponent
+        AnnonceDetailComponent,
+        AnnonceCreatedComponent
     ],
     imports: [
         CommonModule,
@@ -60,6 +63,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         MatInputModule,
         MatTabsModule,
         MatBadgeModule,
+        MatSnackBarModule,
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,

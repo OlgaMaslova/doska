@@ -1,14 +1,19 @@
+/* eslint-disable no-underscore-dangle */
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
     AbstractControl,
     FormBuilder,
     FormGroup,
     Validators
 } from '@angular/forms';
+import { MatRipple } from '@angular/material/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
 import { AnnonceService } from 'src/app/annonce.service';
 import { CreateAnnonceInput } from 'src/app/API.service';
 import { AnnonceStatus } from 'src/models';
+import { AnnonceCardComponent } from '../annonce-card/annonce-card.component';
 
 @Component({
     selector: 'app-form-annonce',
@@ -18,10 +23,14 @@ import { AnnonceStatus } from 'src/models';
 export class FormAnnonceComponent implements OnInit {
     form: FormGroup;
 
+    @ViewChild(MatRipple) ripple: MatRipple;
+
     constructor(
         private fb: FormBuilder,
         private location: Location,
-        private annonceService: AnnonceService
+        private annonceService: AnnonceService,
+        private _snackBar: MatSnackBar,
+        private translate: TranslateService
     ) {}
 
     ngOnInit(): void {
@@ -68,6 +77,7 @@ export class FormAnnonceComponent implements OnInit {
             const created = await this.annonceService.createAnnonce(
                 input as CreateAnnonceInput
             );
+            this.openSnackBar();
             // console.log(created);
         } catch (e) {
             alert('Erreur de validation');
@@ -79,5 +89,12 @@ export class FormAnnonceComponent implements OnInit {
     onCancel() {
         this.form.reset();
         this.location.back();
+    }
+
+    openSnackBar() {
+        this._snackBar.open(
+            this.translate.instant('creationSucces'),
+            this.translate.instant('close')
+        );
     }
 }
