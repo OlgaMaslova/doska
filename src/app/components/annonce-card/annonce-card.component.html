@@ -1,5 +1,5 @@
-<mat-card class="my-card" [routerLink]="annonce.id">
-    <mat-card-header class="card-header" matTooltip="{{'tooltipMsg' | translate }}" matTooltipPosition="above">
+<mat-card class="my-card">
+    <mat-card-header class="card-header" [routerLink]="annonce.id" matTooltip="{{'tooltipMsg' | translate }}" matTooltipPosition="above">
         <mat-card-title>
             <span *ngIf="annonce.status === 'VALIDATED' && isAdmin" matBadge="OK" matBadgeColor="accent"></span>
             <span *ngIf="annonce.status === 'REFUSED' && isAdmin" matBadge="X" matBadgeColor="warn"></span>
@@ -32,11 +32,11 @@
                 <mat-icon svgIcon="place" aria-hidden="false"></mat-icon>
                 {{annonce.location}}
             </div>
-        
         </div>
     </mat-card-footer>
     <mat-card-actions *ngIf="isAdmin">
       <button mat-button (click)="onValidate()" [disabled]="annonce.status === 'VALIDATED'">VALIDATE</button>
       <button mat-button (click)="onRefuse()" [disabled]="annonce.status === 'REFUSED'">REFUSE</button>
+      <button mat-button (click)="onDelete()">DELETE</button>
     </mat-card-actions>
   </mat-card>

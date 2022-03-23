@@ -6,6 +6,9 @@
                     <annonce-card [annonce]="seek"></annonce-card>
                 </div>
             </div>
+            <div *ngIf="annoncesSeek.length === 0" class="div-no-item">
+                <h1>{{'No demands yet' | translate }}</h1>
+            </div>
         </mat-tab>
         <mat-tab label="{{'Offers' | translate }}">
             <div class="column">
@@ -13,12 +16,18 @@
                     <annonce-card [annonce]="offer"></annonce-card>
                 </div>
             </div>
+            <div *ngIf="annoncesOffer.length === 0" class="div-no-item">
+                <h1>{{'No offers yet' | translate }}</h1>
+            </div>
         </mat-tab>
         <mat-tab label="{{'Questions' | translate }}">
             <div class="column">
                 <div class="card-wrapper" *ngFor="let question of questions">
                     <annonce-card [annonce]="question"></annonce-card>
                 </div>
+            </div>
+            <div *ngIf="questions.length === 0" class="div-no-item">
+                <h1>{{'No questions yet' | translate }}</h1>
             </div>
         </mat-tab>
     </mat-tab-group>

@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable class-methods-use-this */
 import { Injectable } from '@angular/core';
 import {
@@ -51,5 +52,11 @@ export class AnnonceService {
 
     async createComment(input: CreateCommentInput): Promise<Comment> {
         return this.API.CreateComment(input);
+    }
+
+    async deleteAnnonce(annonce: Annonce): Promise<Annonce> {
+        return this.API.DeleteAnnonce({
+            id: annonce.id
+        });
     }
 }

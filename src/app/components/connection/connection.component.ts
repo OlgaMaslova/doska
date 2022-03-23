@@ -1,6 +1,6 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { I18n, Amplify, Hub, Auth } from 'aws-amplify';
-import { AuthenticatorService, translations } from '@aws-amplify/ui-angular';
+import { Amplify, Hub, Auth } from 'aws-amplify';
+import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { Router } from '@angular/router';
 import awsExports from '../../../aws-exports';
 

@@ -3,7 +3,7 @@
   "serviceConfiguration": {
     "apiName": "annoncesapp",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-282fcf7c-fa18-4c05-a728-3b9c57239a83/amplify/backend/api/annoncesapp/schema.graphql",
+    "gqlSchemaPath": "/Users/olga/annonces-locales/amplify/backend/api/annoncesapp/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",
@@ -14,10 +14,6 @@
         "mode": "AWS_IAM"
       }
     ],
-    "conflictResolution": {
-      "defaultResolutionStrategy": {
-        "type": "AUTOMERGE"
-      }
-    }
+    "conflictResolution": {}
   }
 }

@@ -28,6 +28,10 @@
     "creationSucces": "Votrea annonce a été créée avec succès. Il est en attente de validation et sera visible bientôt",
     "close": "Fermer",
     "Photo link": "Lien photo",
-    "tooltipMsg": "Voir détails"
+    "tooltipMsg": "Voir détails",
+    "No demands yet": "Pas de demandes pour le moment",
+    "No offers yet": "Pas d'offres pour le moment",
+    "No questions yet": "Pas de questions pour le moment",
+    "Back": "Retour vers les annonces"
 
 }

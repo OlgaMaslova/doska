@@ -27,16 +27,9 @@ mutation CreateAnnonce(
         updatedAt
         deletedAt
         annonceID
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation UpdateAnnonce(
@@ -67,16 +60,9 @@ mutation UpdateAnnonce(
         updatedAt
         deletedAt
         annonceID
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation DeleteAnnonce(
@@ -107,16 +93,9 @@ mutation DeleteAnnonce(
         updatedAt
         deletedAt
         annonceID
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation CreateComment(
@@ -132,9 +111,6 @@ mutation CreateComment(
     updatedAt
     deletedAt
     annonceID
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation UpdateComment(
@@ -150,9 +126,6 @@ mutation UpdateComment(
     updatedAt
     deletedAt
     annonceID
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation DeleteComment(
@@ -168,8 +141,5 @@ mutation DeleteComment(
     updatedAt
     deletedAt
     annonceID
-    _version
-    _deleted
-    _lastChangedAt
   }
 }

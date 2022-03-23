@@ -24,16 +24,9 @@ query GetAnnonce($id: ID!) {
         updatedAt
         deletedAt
         annonceID
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 query ListAnnonces(
@@ -58,52 +51,9 @@ query ListAnnonces(
       status
       comments {
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
     }
     nextToken
-    startedAt
-  }
-}
-query SyncAnnonces(
-  $filter: ModelAnnonceFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncAnnonces(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      title
-      text
-      contactName
-      contactEmail
-      contactPhone
-      createdAt
-      updatedAt
-      deletedAt
-      photos
-      type
-      location
-      status
-      comments {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    nextToken
-    startedAt
   }
 }
 query AnnoncesByStatus(
@@ -136,14 +86,9 @@ query AnnoncesByStatus(
       status
       comments {
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
     }
     nextToken
-    startedAt
   }
 }
 query GetComment($id: ID!) {
@@ -156,9 +101,6 @@ query GetComment($id: ID!) {
     updatedAt
     deletedAt
     annonceID
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 query ListComments(
@@ -176,40 +118,7 @@ query ListComments(
       updatedAt
       deletedAt
       annonceID
-      _version
-      _deleted
-      _lastChangedAt
     }
     nextToken
-    startedAt
-  }
-}
-query SyncComments(
-  $filter: ModelCommentFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncComments(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      title
-      text
-      author
-      createdAt
-      updatedAt
-      deletedAt
-      annonceID
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    nextToken
-    startedAt
   }
 }

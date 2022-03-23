@@ -1,4 +1,8 @@
 <div class="detail-container" *ngIf="annonce">
+    <div class="back-container" routerLink="/">
+        <mat-icon svgIcon="back" aria-hidden="false"></mat-icon>
+        {{'Back' | translate}}
+    </div>
     <div class="detail-wrapper">
         <div class="detail-contact-container">
             <div *ngIf="annonce.contactName" class="contact-info"> 

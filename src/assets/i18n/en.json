@@ -28,6 +28,10 @@
     "creationSucces": "Your post has been created. It will be visible after validation by the administrator.",
     "close": "Close",
     "Photo link": "Photo link",
-    "tooltipMsg": "See details"
+    "tooltipMsg": "See details",
+    "No demands yet": "No demands yet",
+    "No offers yet": "No offers yet",
+    "No questions yet": "No questions yet",
+    "Back": "Back to ads"
 
 }

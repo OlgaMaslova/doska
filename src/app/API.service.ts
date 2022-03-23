@@ -32,7 +32,6 @@ export type CreateAnnonceInput = {
   type?: AnnonceType | null;
   location?: string | null;
   status?: AnnonceStatus | null;
-  _version?: number | null;
 };
 
 export enum AnnonceType {
@@ -142,16 +141,12 @@ export type Annonce = {
   location?: string | null;
   status?: AnnonceStatus | null;
   comments?: ModelCommentConnection | null;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
 };
 
 export type ModelCommentConnection = {
   __typename: "ModelCommentConnection";
   items: Array<Comment | null>;
   nextToken?: string | null;
-  startedAt?: number | null;
 };
 
 export type Comment = {
@@ -164,9 +159,6 @@ export type Comment = {
   updatedAt?: string | null;
   deletedAt?: number | null;
   annonceID: string;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
 };
 
 export type UpdateAnnonceInput = {
@@ -183,12 +175,10 @@ export type UpdateAnnonceInput = {
   type?: AnnonceType | null;
   location?: string | null;
   status?: AnnonceStatus | null;
-  _version?: number | null;
 };
 
 export type DeleteAnnonceInput = {
   id: string;
-  _version?: number | null;
 };
 
 export type CreateCommentInput = {
@@ -200,7 +190,6 @@ export type CreateCommentInput = {
   updatedAt?: string | null;
   deletedAt?: number | null;
   annonceID: string;
-  _version?: number | null;
 };
 
 export type ModelCommentConditionInput = {
@@ -241,12 +230,10 @@ export type UpdateCommentInput = {
   updatedAt?: string | null;
   deletedAt?: number | null;
   annonceID?: string | null;
-  _version?: number | null;
 };
 
 export type DeleteCommentInput = {
   id: string;
-  _version?: number | null;
 };
 
 export type ModelAnnonceFilterInput = {
@@ -272,7 +259,6 @@ export type ModelAnnonceConnection = {
   __typename: "ModelAnnonceConnection";
   items: Array<Annonce | null>;
   nextToken?: string | null;
-  startedAt?: number | null;
 };
 
 export enum ModelSortDirection {
@@ -321,16 +307,9 @@ export type CreateAnnonceMutation = {
       updatedAt?: string | null;
       deletedAt?: number | null;
       annonceID: string;
-      _version: number;
-      _deleted?: boolean | null;
-      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
-    startedAt?: number | null;
   } | null;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
 };
 
 export type UpdateAnnonceMutation = {
@@ -360,16 +339,9 @@ export type UpdateAnnonceMutation = {
       updatedAt?: string | null;
       deletedAt?: number | null;
       annonceID: string;
-      _version: number;
-      _deleted?: boolean | null;
-      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
-    startedAt?: number | null;
   } | null;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
 };
 
 export type DeleteAnnonceMutation = {
@@ -399,16 +371,9 @@ export type DeleteAnnonceMutation = {
       updatedAt?: string | null;
       deletedAt?: number | null;
       annonceID: string;
-      _version: number;
-      _deleted?: boolean | null;
-      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
-    startedAt?: number | null;
   } | null;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
 };
 
 export type CreateCommentMutation = {
@@ -421,9 +386,6 @@ export type CreateCommentMutation = {
   updatedAt?: string | null;
   deletedAt?: number | null;
   annonceID: string;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
 };
 
 export type UpdateCommentMutation = {
@@ -436,9 +398,6 @@ export type UpdateCommentMutation = {
   updatedAt?: string | null;
   deletedAt?: number | null;
   annonceID: string;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
 };
 
 export type DeleteCommentMutation = {
@@ -451,9 +410,6 @@ export type DeleteCommentMutation = {
   updatedAt?: string | null;
   deletedAt?: number | null;
   annonceID: string;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
 };
 
 export type GetAnnonceQuery = {
@@ -483,16 +439,9 @@ export type GetAnnonceQuery = {
       updatedAt?: string | null;
       deletedAt?: number | null;
       annonceID: string;
-      _version: number;
-      _deleted?: boolean | null;
-      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
-    startedAt?: number | null;
   } | null;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
 };
 
 export type ListAnnoncesQuery = {
@@ -515,44 +464,9 @@ export type ListAnnoncesQuery = {
     comments?: {
       __typename: "ModelCommentConnection";
       nextToken?: string | null;
-      startedAt?: number | null;
     } | null;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
-  startedAt?: number | null;
-};
-
-export type SyncAnnoncesQuery = {
-  __typename: "ModelAnnonceConnection";
-  items: Array<{
-    __typename: "Annonce";
-    id: string;
-    title: string;
-    text?: string | null;
-    contactName?: string | null;
-    contactEmail?: string | null;
-    contactPhone?: string | null;
-    createdAt?: string | null;
-    updatedAt?: string | null;
-    deletedAt?: number | null;
-    photos?: Array<string | null> | null;
-    type?: AnnonceType | null;
-    location?: string | null;
-    status?: AnnonceStatus | null;
-    comments?: {
-      __typename: "ModelCommentConnection";
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-  } | null>;
-  nextToken?: string | null;
-  startedAt?: number | null;
 };
 
 export type AnnoncesByStatusQuery = {
@@ -575,14 +489,9 @@ export type AnnoncesByStatusQuery = {
     comments?: {
       __typename: "ModelCommentConnection";
       nextToken?: string | null;
-      startedAt?: number | null;
     } | null;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
-  startedAt?: number | null;
 };
 
 export type GetCommentQuery = {
@@ -595,9 +504,6 @@ export type GetCommentQuery = {
   updatedAt?: string | null;
   deletedAt?: number | null;
   annonceID: string;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
 };
 
 export type ListCommentsQuery = {
@@ -612,32 +518,8 @@ export type ListCommentsQuery = {
     updatedAt?: string | null;
     deletedAt?: number | null;
     annonceID: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
   } | null>;
   nextToken?: string | null;
-  startedAt?: number | null;
-};
-
-export type SyncCommentsQuery = {
-  __typename: "ModelCommentConnection";
-  items: Array<{
-    __typename: "Comment";
-    id: string;
-    title?: string | null;
-    text?: string | null;
-    author?: string | null;
-    createdAt?: string | null;
-    updatedAt?: string | null;
-    deletedAt?: number | null;
-    annonceID: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-  } | null>;
-  nextToken?: string | null;
-  startedAt?: number | null;
 };
 
 export type OnCreateAnnonceSubscription = {
@@ -667,16 +549,9 @@ export type OnCreateAnnonceSubscription = {
       updatedAt?: string | null;
       deletedAt?: number | null;
       annonceID: string;
-      _version: number;
-      _deleted?: boolean | null;
-      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
-    startedAt?: number | null;
   } | null;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
 };
 
 export type OnUpdateAnnonceSubscription = {
@@ -706,16 +581,9 @@ export type OnUpdateAnnonceSubscription = {
       updatedAt?: string | null;
       deletedAt?: number | null;
       annonceID: string;
-      _version: number;
-      _deleted?: boolean | null;
-      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
-    startedAt?: number | null;
   } | null;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
 };
 
 export type OnDeleteAnnonceSubscription = {
@@ -745,16 +613,9 @@ export type OnDeleteAnnonceSubscription = {
       updatedAt?: string | null;
       deletedAt?: number | null;
       annonceID: string;
-      _version: number;
-      _deleted?: boolean | null;
-      _lastChangedAt: number;
     } | null>;
     nextToken?: string | null;
-    startedAt?: number | null;
   } | null;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
 };
 
 export type OnCreateCommentSubscription = {
@@ -767,9 +628,6 @@ export type OnCreateCommentSubscription = {
   updatedAt?: string | null;
   deletedAt?: number | null;
   annonceID: string;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
 };
 
 export type OnUpdateCommentSubscription = {
@@ -782,9 +640,6 @@ export type OnUpdateCommentSubscription = {
   updatedAt?: string | null;
   deletedAt?: number | null;
   annonceID: string;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
 };
 
 export type OnDeleteCommentSubscription = {
@@ -797,9 +652,6 @@ export type OnDeleteCommentSubscription = {
   updatedAt?: string | null;
   deletedAt?: number | null;
   annonceID: string;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
 };
 
 @Injectable({
@@ -838,16 +690,9 @@ export class APIService {
               updatedAt
               deletedAt
               annonceID
-              _version
-              _deleted
-              _lastChangedAt
             }
             nextToken
-            startedAt
           }
-          _version
-          _deleted
-          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -893,16 +738,9 @@ export class APIService {
               updatedAt
               deletedAt
               annonceID
-              _version
-              _deleted
-              _lastChangedAt
             }
             nextToken
-            startedAt
           }
-          _version
-          _deleted
-          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -948,16 +786,9 @@ export class APIService {
               updatedAt
               deletedAt
               annonceID
-              _version
-              _deleted
-              _lastChangedAt
             }
             nextToken
-            startedAt
           }
-          _version
-          _deleted
-          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -986,9 +817,6 @@ export class APIService {
           updatedAt
           deletedAt
           annonceID
-          _version
-          _deleted
-          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -1017,9 +845,6 @@ export class APIService {
           updatedAt
           deletedAt
           annonceID
-          _version
-          _deleted
-          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -1048,9 +873,6 @@ export class APIService {
           updatedAt
           deletedAt
           annonceID
-          _version
-          _deleted
-          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -1093,16 +915,9 @@ export class APIService {
               updatedAt
               deletedAt
               annonceID
-              _version
-              _deleted
-              _lastChangedAt
             }
             nextToken
-            startedAt
           }
-          _version
-          _deleted
-          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -1139,14 +954,9 @@ export class APIService {
             comments {
               __typename
               nextToken
-              startedAt
             }
-            _version
-            _deleted
-            _lastChangedAt
           }
           nextToken
-          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -1163,61 +973,6 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListAnnoncesQuery>response.data.listAnnonces;
-  }
-  async SyncAnnonces(
-    filter?: ModelAnnonceFilterInput,
-    limit?: number,
-    nextToken?: string,
-    lastSync?: number
-  ): Promise<SyncAnnoncesQuery> {
-    const statement = `query SyncAnnonces($filter: ModelAnnonceFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
-        syncAnnonces(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
-          __typename
-          items {
-            __typename
-            id
-            title
-            text
-            contactName
-            contactEmail
-            contactPhone
-            createdAt
-            updatedAt
-            deletedAt
-            photos
-            type
-            location
-            status
-            comments {
-              __typename
-              nextToken
-              startedAt
-            }
-            _version
-            _deleted
-            _lastChangedAt
-          }
-          nextToken
-          startedAt
-        }
-      }`;
-    const gqlAPIServiceArguments: any = {};
-    if (filter) {
-      gqlAPIServiceArguments.filter = filter;
-    }
-    if (limit) {
-      gqlAPIServiceArguments.limit = limit;
-    }
-    if (nextToken) {
-      gqlAPIServiceArguments.nextToken = nextToken;
-    }
-    if (lastSync) {
-      gqlAPIServiceArguments.lastSync = lastSync;
-    }
-    const response = (await API.graphql(
-      graphqlOperation(statement, gqlAPIServiceArguments)
-    )) as any;
-    return <SyncAnnoncesQuery>response.data.syncAnnonces;
   }
   async AnnoncesByStatus(
     status: AnnonceStatus,
@@ -1247,14 +1002,9 @@ export class APIService {
             comments {
               __typename
               nextToken
-              startedAt
             }
-            _version
-            _deleted
-            _lastChangedAt
           }
           nextToken
-          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -1289,9 +1039,6 @@ export class APIService {
           updatedAt
           deletedAt
           annonceID
-          _version
-          _deleted
-          _lastChangedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -1320,12 +1067,8 @@ export class APIService {
             updatedAt
             deletedAt
             annonceID
-            _version
-            _deleted
-            _lastChangedAt
           }
           nextToken
-          startedAt
         }
       }`;
     const gqlAPIServiceArguments: any = {};
@@ -1342,51 +1085,6 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListCommentsQuery>response.data.listComments;
-  }
-  async SyncComments(
-    filter?: ModelCommentFilterInput,
-    limit?: number,
-    nextToken?: string,
-    lastSync?: number
-  ): Promise<SyncCommentsQuery> {
-    const statement = `query SyncComments($filter: ModelCommentFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
-        syncComments(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
-          __typename
-          items {
-            __typename
-            id
-            title
-            text
-            author
-            createdAt
-            updatedAt
-            deletedAt
-            annonceID
-            _version
-            _deleted
-            _lastChangedAt
-          }
-          nextToken
-          startedAt
-        }
-      }`;
-    const gqlAPIServiceArguments: any = {};
-    if (filter) {
-      gqlAPIServiceArguments.filter = filter;
-    }
-    if (limit) {
-      gqlAPIServiceArguments.limit = limit;
-    }
-    if (nextToken) {
-      gqlAPIServiceArguments.nextToken = nextToken;
-    }
-    if (lastSync) {
-      gqlAPIServiceArguments.lastSync = lastSync;
-    }
-    const response = (await API.graphql(
-      graphqlOperation(statement, gqlAPIServiceArguments)
-    )) as any;
-    return <SyncCommentsQuery>response.data.syncComments;
   }
   OnCreateAnnonceListener: Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateAnnonce">>
@@ -1420,16 +1118,9 @@ export class APIService {
               updatedAt
               deletedAt
               annonceID
-              _version
-              _deleted
-              _lastChangedAt
             }
             nextToken
-            startedAt
           }
-          _version
-          _deleted
-          _lastChangedAt
         }
       }`
     )
@@ -1469,16 +1160,9 @@ export class APIService {
               updatedAt
               deletedAt
               annonceID
-              _version
-              _deleted
-              _lastChangedAt
             }
             nextToken
-            startedAt
           }
-          _version
-          _deleted
-          _lastChangedAt
         }
       }`
     )
@@ -1518,16 +1202,9 @@ export class APIService {
               updatedAt
               deletedAt
               annonceID
-              _version
-              _deleted
-              _lastChangedAt
             }
             nextToken
-            startedAt
           }
-          _version
-          _deleted
-          _lastChangedAt
         }
       }`
     )
@@ -1550,9 +1227,6 @@ export class APIService {
           updatedAt
           deletedAt
           annonceID
-          _version
-          _deleted
-          _lastChangedAt
         }
       }`
     )
@@ -1575,9 +1249,6 @@ export class APIService {
           updatedAt
           deletedAt
           annonceID
-          _version
-          _deleted
-          _lastChangedAt
         }
       }`
     )
@@ -1600,9 +1271,6 @@ export class APIService {
           updatedAt
           deletedAt
           annonceID
-          _version
-          _deleted
-          _lastChangedAt
         }
       }`
     )

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
+import { Auth } from 'aws-amplify';
 import { AnnonceService } from 'src/app/annonce.service';
 import { AnnonceStatus } from 'src/app/API.service';
 import { ExtendedAnnonce } from 'src/app/types.service';
@@ -48,23 +49,29 @@ export class AnnonceCardComponent implements OnInit {
         );
     }
 
-    ngOnInit(): void {}
+    async ngOnInit() {
+        await Auth.currentAuthenticatedUser().then((user) => {
+            if (user) {
+                this.isAdmin = true;
+            }
+        });
+    }
 
     async onValidate() {
         this.annonce = await this.annonceService.updateAnnonce({
             id: this.annonce.id!,
-            status: AnnonceStatus.VALIDATED,
-            // eslint-disable-next-line no-underscore-dangle
-            _version: this.annonce._version
+            status: AnnonceStatus.VALIDATED
         });
     }
 
     async onRefuse() {
         this.annonce = await this.annonceService.updateAnnonce({
             id: this.annonce.id!,
-            status: AnnonceStatus.REFUSED,
-            // eslint-disable-next-line no-underscore-dangle
-            _version: this.annonce._version
+            status: AnnonceStatus.REFUSED
         });
+    }
+
+    async onDelete() {
+        await this.annonceService.deleteAnnonce(this.annonce);
     }
 }

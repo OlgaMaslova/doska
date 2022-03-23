@@ -11,7 +11,7 @@ $teal-palette: mat.define-palette(mat.$teal-palette);
     .detail-wrapper {
         display: flex;
         flex-direction: column;
-        margin: 2rem 0rem;
+        margin: 0.5rem 0rem 2rem 0rem;
         padding: 1rem 0rem;
         border-radius: 8px;
         width: 100%;
@@ -69,13 +69,18 @@ $teal-palette: mat.define-palette(mat.$teal-palette);
             }
         }
     }
-
-    
 }
 
 @media screen and (max-width: 500px) {
     .detail-container {
         width: 95%;
     }
+}
 
-  }
+.back-container {
+    margin-top: 1rem;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { throws } from 'assert';
 import { AnnonceService } from 'src/app/annonce.service';
@@ -20,8 +22,17 @@ export class AnnonceDetailComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private annonceService: AnnonceService,
-        private fb: FormBuilder
-    ) {}
+        private fb: FormBuilder,
+        private matIconRegistry: MatIconRegistry,
+        private domSanitizer: DomSanitizer
+    ) {
+        this.matIconRegistry.addSvgIcon(
+            `back`,
+            this.domSanitizer.bypassSecurityTrustResourceUrl(
+                '../../../assets/icons/arrow_back_black_24dp.svg'
+            )
+        );
+    }
 
     ngOnInit(): void {
         this.route.params.subscribe((params) => {

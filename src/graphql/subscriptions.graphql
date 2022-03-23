@@ -24,16 +24,9 @@ subscription OnCreateAnnonce {
         updatedAt
         deletedAt
         annonceID
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnUpdateAnnonce {
@@ -61,16 +54,9 @@ subscription OnUpdateAnnonce {
         updatedAt
         deletedAt
         annonceID
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnDeleteAnnonce {
@@ -98,16 +84,9 @@ subscription OnDeleteAnnonce {
         updatedAt
         deletedAt
         annonceID
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnCreateComment {
@@ -120,9 +99,6 @@ subscription OnCreateComment {
     updatedAt
     deletedAt
     annonceID
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnUpdateComment {
@@ -135,9 +111,6 @@ subscription OnUpdateComment {
     updatedAt
     deletedAt
     annonceID
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnDeleteComment {
@@ -150,8 +123,5 @@ subscription OnDeleteComment {
     updatedAt
     deletedAt
     annonceID
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
