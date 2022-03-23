@@ -27,6 +27,7 @@
     "comments": "commentaires",
     "creationSucces": "Votrea annonce a été créée avec succès. Il est en attente de validation et sera visible bientôt",
     "close": "Fermer",
-    "Photo link": "Lien photo"
+    "Photo link": "Lien photo",
+    "tooltipMsg": "Voir détails"
 
 }

@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -64,6 +65,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         MatTabsModule,
         MatBadgeModule,
         MatSnackBarModule,
+        MatTooltipModule,
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,

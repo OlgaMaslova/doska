@@ -27,6 +27,7 @@
     "comments": "comments",
     "creationSucces": "Your post has been created. It will be visible after validation by the administrator.",
     "close": "Close",
-    "Photo link": "Photo link"
+    "Photo link": "Photo link",
+    "tooltipMsg": "See details"
 
 }

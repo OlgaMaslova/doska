@@ -6,8 +6,27 @@
     .locale-btn {
         margin: 0px 3px;
     }
+    @media screen and (max-width: 500px) {
+        .locale-btn {
+            width: 20px;
+            height: 20px;
+            font-size: 10px;
+            line-height: 12px !important;
+
+            
+        }
+    }
 
     .selected {
         background-color: #880E4F;
     }
 }
+@media screen and (max-width: 500px) {
+    .mat-mini-fab {
+        &::ng-deep .mat-button-wrapper {
+            padding: 0px !important;
+            line-height: 12px !important;
+        }
+    }
+}
+
