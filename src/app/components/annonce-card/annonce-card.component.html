@@ -1,5 +1,5 @@
 <mat-card class="my-card">
-    <mat-card-header class="card-header" [routerLink]="annonce.id" matTooltip="{{'tooltipMsg' | translate }}" matTooltipPosition="above">
+    <mat-card-header class="card-header" [routerLink]="annonce.id" matTooltip="{{'tooltipCardHeader' | translate }}" matTooltipPosition="above">
         <mat-card-title>
             <span *ngIf="annonce.status === 'VALIDATED' && isAdmin" matBadge="OK" matBadgeColor="accent"></span>
             <span *ngIf="annonce.status === 'REFUSED' && isAdmin" matBadge="X" matBadgeColor="warn"></span>
@@ -24,13 +24,14 @@
                 <mat-icon svgIcon="phone" aria-hidden="false"></mat-icon>
                 {{annonce.contactPhone}}
             </div>
-            <div *ngIf="annonce.contactEmail" class="contact-info"> 
-                <mat-icon svgIcon="email" aria-hidden="false"></mat-icon>
-                {{annonce.contactEmail}}
-            </div>
             <div *ngIf="annonce.location" class="contact-info"> 
                 <mat-icon svgIcon="place" aria-hidden="false"></mat-icon>
                 {{annonce.location}}
+            </div>
+            <div class="contact-info comment" matTooltip="{{'tooltipCardComment' | translate }}" 
+            matTooltipPosition="right" [routerLink]="annonce.id"> 
+                <mat-icon svgIcon="comment" aria-hidden="false"></mat-icon>
+                {{annonce.comments!.items ? annonce.comments!.items.length : 0 }}
             </div>
         </div>
     </mat-card-footer>

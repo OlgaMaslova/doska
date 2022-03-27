@@ -3,7 +3,7 @@
         <mat-tab label="{{'Demands' | translate }}">
             <div class="column">
                 <div class="card-wrapper" *ngFor="let seek of annoncesSeek">
-                    <annonce-card [annonce]="seek"></annonce-card>
+                    <annonce-card [annonce]="seek" [isAdmin]="isAdmin"></annonce-card>
                 </div>
             </div>
             <div *ngIf="annoncesSeek.length === 0" class="div-no-item">
@@ -13,7 +13,7 @@
         <mat-tab label="{{'Offers' | translate }}">
             <div class="column">
                 <div class="card-wrapper" *ngFor="let offer of annoncesOffer">
-                    <annonce-card [annonce]="offer"></annonce-card>
+                    <annonce-card [annonce]="offer" [isAdmin]="isAdmin"></annonce-card>
                 </div>
             </div>
             <div *ngIf="annoncesOffer.length === 0" class="div-no-item">
@@ -23,7 +23,7 @@
         <mat-tab label="{{'Questions' | translate }}">
             <div class="column">
                 <div class="card-wrapper" *ngFor="let question of questions">
-                    <annonce-card [annonce]="question"></annonce-card>
+                    <annonce-card [annonce]="question" [isAdmin]="isAdmin"></annonce-card>
                 </div>
             </div>
             <div *ngIf="questions.length === 0" class="div-no-item">

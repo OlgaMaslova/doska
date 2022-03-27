@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { TranslateService } from '@ngx-translate/core';
-import { Auth } from 'aws-amplify';
 import { AnnonceService } from 'src/app/annonce.service';
 import { AnnonceStatus } from 'src/app/API.service';
 import { ExtendedAnnonce } from 'src/app/types.service';
@@ -20,8 +18,7 @@ export class AnnonceCardComponent implements OnInit {
     constructor(
         private matIconRegistry: MatIconRegistry,
         private domSanitizer: DomSanitizer,
-        private annonceService: AnnonceService,
-        private translate: TranslateService
+        private annonceService: AnnonceService
     ) {
         this.matIconRegistry.addSvgIcon(
             `phone`,
@@ -47,15 +44,15 @@ export class AnnonceCardComponent implements OnInit {
                 '../../../assets/icons/place_black_24dp.svg'
             )
         );
+        this.matIconRegistry.addSvgIcon(
+            `comment`,
+            this.domSanitizer.bypassSecurityTrustResourceUrl(
+                '../../../assets/icons/chat_bubble_outline_black_24dp.svg'
+            )
+        );
     }
 
-    async ngOnInit() {
-        await Auth.currentAuthenticatedUser().then((user) => {
-            if (user) {
-                this.isAdmin = true;
-            }
-        });
-    }
+    async ngOnInit() {}
 
     async onValidate() {
         this.annonce = await this.annonceService.updateAnnonce({

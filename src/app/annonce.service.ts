@@ -38,6 +38,20 @@ export class AnnonceService {
         return null;
     }
 
+    async getAnnonces(): Promise<ExtendedAnnonce[] | null> {
+        const annonces = (await this.API.ListAnnonces())
+            .items as ExtendedAnnonce[];
+        if (annonces) {
+            for (const annonce of annonces) {
+                if (annonce.photos) {
+                    [annonce.coverPhoto] = annonce.photos;
+                }
+            }
+            return annonces;
+        }
+        return null;
+    }
+
     async updateAnnonce(input: UpdateAnnonceInput): Promise<Annonce> {
         return this.API.UpdateAnnonce(input);
     }

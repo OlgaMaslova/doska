@@ -37,7 +37,7 @@
                 <input matInput formControlName="contactPhone" placeholder="0601020304">
               </mat-form-field>
               <mat-form-field appearance="fill">
-                <mat-label>{{'Your Email' | translate }}</mat-label>
+                <mat-label>{{'Your Email' | translate }} ({{'for administration only' | translate }})</mat-label>
                 <input matInput type="email"  formControlName="contactEmail">
                 <mat-error *ngIf="errors['contactEmail'] && errors['contactEmail'].required">{{'Email is required' | translate}}</mat-error>
                 <mat-error *ngIf="errors['contactEmail'] && errors['contactEmail'].email">{{'Please enter valid email' | translate}}</mat-error>

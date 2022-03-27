@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AnnonceService } from 'src/app/annonce.service';
 import { AnnonceStatus, AnnonceType } from 'src/app/API.service';
 import { ExtendedAnnonce } from 'src/app/types.service';
+import { Auth } from 'aws-amplify';
 
 @Component({
     selector: 'app-main-list',
@@ -17,16 +18,31 @@ export class MainListComponent implements OnInit {
 
     questions: ExtendedAnnonce[] = [];
 
+    isAdmin = false;
+
     constructor(private annonceService: AnnonceService) {}
 
-    ngOnInit(): void {
-        this.getAnnonces();
+    async ngOnInit() {
+        try {
+            await Auth.currentAuthenticatedUser().then((user) => {
+                if (user) {
+                    this.isAdmin = true;
+                    this.getAnnonces();
+                }
+            });
+        } catch (error) {
+            this.getAnnonces();
+        }
     }
 
     async getAnnonces() {
-        const annonces = (await this.annonceService.getAnnoncesByStatus(
+        let annonces = (await this.annonceService.getAnnoncesByStatus(
             AnnonceStatus.VALIDATED
         )) as ExtendedAnnonce[];
+        if (this.isAdmin) {
+            annonces =
+                (await this.annonceService.getAnnonces()) as ExtendedAnnonce[];
+        }
         this.annoncesOffer = annonces.filter(
             (annonce) => annonce.type === AnnonceType.OFFER
         );
