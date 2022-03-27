@@ -13,7 +13,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { AnnonceService } from 'src/app/annonce.service';
 import { CreateAnnonceInput } from 'src/app/API.service';
 import { AnnonceStatus } from 'src/models';
-import { AnnonceCardComponent } from '../annonce-card/annonce-card.component';
+
+import * as uuid from 'uuid';
+import { uploadFileToS3 } from 'src/app/helpers.service';
 
 @Component({
     selector: 'app-form-annonce',
@@ -25,6 +27,10 @@ export class FormAnnonceComponent implements OnInit {
 
     @ViewChild(MatRipple) ripple: MatRipple;
 
+    fileToUpload;
+
+    currentFilePath;
+
     constructor(
         private fb: FormBuilder,
         private location: Location,
@@ -35,14 +41,14 @@ export class FormAnnonceComponent implements OnInit {
 
     ngOnInit(): void {
         this.form = this.fb.group({
+            id: uuid.v4(),
             type: [null, [Validators.required]],
             title: [null, [Validators.required]],
             text: [null, [Validators.required]],
-            contactName: [null],
+            contactName: [null, [Validators.required]],
             contactEmail: [null, [Validators.required, Validators.email]],
             contactPhone: [null],
             location: [null],
-            photo: [null],
             status: AnnonceStatus.PENDING
         });
     }
@@ -65,15 +71,21 @@ export class FormAnnonceComponent implements OnInit {
     }
 
     async onSubmit() {
-        const input = this.form.value;
+        const input = this.form.value as CreateAnnonceInput;
         if (!this.form.valid) {
             return;
         }
         try {
-            if (input.photo) {
-                input.photos = [input.photo];
+            if (this.fileToUpload) {
+                const result = await uploadFileToS3(
+                    '',
+                    this.fileToUpload,
+                    input.id!
+                );
+                if (result) {
+                    input.photos = [result];
+                }
             }
-            delete input.photo;
             const created = await this.annonceService.createAnnonce(
                 input as CreateAnnonceInput
             );
@@ -96,5 +108,17 @@ export class FormAnnonceComponent implements OnInit {
             this.translate.instant('creationSucces'),
             this.translate.instant('close')
         );
+    }
+
+    handleFileInput(files: FileList) {
+        if (files.length > 0) {
+            this.fileToUpload = files.item(0);
+            // this.currentFilePath = URL.createObjectURL(this.fileToUpload);
+            const reader = new FileReader();
+            reader.readAsDataURL(files[0]);
+            reader.onload = (_event) => {
+                this.currentFilePath = reader.result;
+            };
+        }
     }
 }

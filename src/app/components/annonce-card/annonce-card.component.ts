@@ -69,6 +69,7 @@ export class AnnonceCardComponent implements OnInit {
     }
 
     async onDelete() {
-        await this.annonceService.deleteAnnonce(this.annonce);
+        const deleted = await this.annonceService.deleteAnnonce(this.annonce);
+        console.log('deleted', deleted);
     }
 }

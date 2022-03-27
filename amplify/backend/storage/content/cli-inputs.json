@@ -1,0 +1,18 @@
+{
+  "resourceName": "content",
+  "policyUUID": "eb6c38c4",
+  "bucketName": "annoncesapp75907cd83baa43e081cadeea16e33d0a",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

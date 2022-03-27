@@ -20,13 +20,16 @@
                 <textarea matInput formControlName="text"></textarea>
                 <mat-error *ngIf="errors['text'] && errors['text'].required">{{'Description is required' | translate}}</mat-error>
               </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>{{'Photo link' | translate }}</mat-label>
-                <textarea matInput formControlName="photo"></textarea>
-              </mat-form-field>
+              <!-- Photo input and preview -->
+              <button type="button" class="btn-file-input"  mat-stroked-button color="primary" (click)="fileInput.click()">{{'Add photo' | translate}}</button>
+              <input hidden type="file" #fileInput (change)="handleFileInput($event.target.files)" />
+              <div class="photo-preview" *ngIf="currentFilePath">
+                <img [src]="currentFilePath" alt="photo">
+            </div>
               <mat-form-field appearance="fill">
                 <mat-label>{{'Your name' | translate }}</mat-label>
                 <input matInput formControlName="contactName">
+                <mat-error *ngIf="errors['contactName'] && errors['contactName'].required">{{'Name is required' | translate}}</mat-error>
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>{{'Location' | translate }}</mat-label>

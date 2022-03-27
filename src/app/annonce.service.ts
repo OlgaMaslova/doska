@@ -10,6 +10,7 @@ import {
     CreateCommentInput,
     UpdateAnnonceInput
 } from './API.service';
+import { deleteFromS3, getSignedFile } from './helpers.service';
 import { ExtendedAnnonce } from './types.service';
 
 @Injectable({
@@ -28,11 +29,15 @@ export class AnnonceService {
         const annonces = (await this.API.AnnoncesByStatus(status))
             .items as ExtendedAnnonce[];
         if (annonces) {
-            for (const annonce of annonces) {
-                if (annonce.photos) {
-                    [annonce.coverPhoto] = annonce.photos;
-                }
-            }
+            await Promise.all(
+                annonces.map(async (annonce) => {
+                    if (annonce.photos) {
+                        annonce.coverPhoto = await getSignedFile(
+                            annonce.photos[0]
+                        );
+                    }
+                })
+            );
             return annonces;
         }
         return null;
@@ -42,11 +47,15 @@ export class AnnonceService {
         const annonces = (await this.API.ListAnnonces())
             .items as ExtendedAnnonce[];
         if (annonces) {
-            for (const annonce of annonces) {
-                if (annonce.photos) {
-                    [annonce.coverPhoto] = annonce.photos;
-                }
-            }
+            await Promise.all(
+                annonces.map(async (annonce) => {
+                    if (annonce.photos) {
+                        annonce.coverPhoto = await getSignedFile(
+                            annonce.photos[0]
+                        );
+                    }
+                })
+            );
             return annonces;
         }
         return null;
@@ -59,7 +68,7 @@ export class AnnonceService {
     async getAnnonce(id: string): Promise<ExtendedAnnonce> {
         const annonce = (await this.API.GetAnnonce(id)) as ExtendedAnnonce;
         if (annonce.photos) {
-            [annonce.coverPhoto] = annonce.photos;
+            annonce.coverPhoto = await getSignedFile(annonce.photos[0]);
         }
         return annonce;
     }
@@ -69,6 +78,16 @@ export class AnnonceService {
     }
 
     async deleteAnnonce(annonce: Annonce): Promise<Annonce> {
+        if (annonce.comments!.items && annonce.comments!.items.length > 0) {
+            await Promise.all(
+                annonce.comments!.items.map(async (comment) => {
+                    await this.API.DeleteComment({ id: comment!.id });
+                })
+            );
+        }
+        if (annonce.photos && annonce.photos.length > 0) {
+            await deleteFromS3(annonce.photos[0]);
+        }
         return this.API.DeleteAnnonce({
             id: annonce.id
         });
