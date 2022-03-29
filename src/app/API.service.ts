@@ -37,7 +37,8 @@ export type CreateAnnonceInput = {
 export enum AnnonceType {
   OFFER = "OFFER",
   DEMAND = "DEMAND",
-  QUESTION = "QUESTION"
+  QUESTION = "QUESTION",
+  POST = "POST"
 }
 
 export enum AnnonceStatus {

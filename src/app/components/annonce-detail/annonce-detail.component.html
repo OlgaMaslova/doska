@@ -17,7 +17,7 @@
             {{annonce.createdAt! | localizedDate:'short_date_time' | async }}
         </div>
         <h2>{{annonce.title}}</h2>
-        <div class="content">{{annonce.text}}</div>
+        <div class="content description-container">{{annonce.text}}</div>
         <div class="photo" *ngIf="annonce.coverPhoto">
             <img [src]="annonce.coverPhoto" [alt]="annonce.title">
         </div>

@@ -2,6 +2,7 @@ enum AnnonceType {
   OFFER
   DEMAND
   QUESTION
+  POST
 }
 
 enum AnnonceStatus {

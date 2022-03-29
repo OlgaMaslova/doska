@@ -1,5 +1,15 @@
 <div class="list-container">
     <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="{{'News' | translate }}">
+            <div class="column">
+                <div class="card-wrapper" *ngFor="let post of news">
+                    <annonce-card [annonce]="post" [isAdmin]="isAdmin"></annonce-card>
+                </div>
+            </div>
+            <div *ngIf="annoncesSeek.length === 0" class="div-no-item">
+                <h1>{{'No demands yet' | translate }}</h1>
+            </div>
+        </mat-tab>
         <mat-tab label="{{'Demands' | translate }}">
             <div class="column">
                 <div class="card-wrapper" *ngFor="let seek of annoncesSeek">

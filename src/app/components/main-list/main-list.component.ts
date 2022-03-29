@@ -18,6 +18,8 @@ export class MainListComponent implements OnInit {
 
     questions: ExtendedAnnonce[] = [];
 
+    news: ExtendedAnnonce[] = [];
+
     isAdmin = false;
 
     constructor(private annonceService: AnnonceService) {}
@@ -51,6 +53,9 @@ export class MainListComponent implements OnInit {
         );
         this.questions = annonces.filter(
             (annonce) => annonce.type === AnnonceType.QUESTION
+        );
+        this.news = annonces.filter(
+            (annonce) => annonce.type === AnnonceType.POST
         );
     }
 }

@@ -1,5 +1,5 @@
 <div class="form-container">
-    <div class="form-wrapper">
+    <div class="form-wrapper" *ngIf="form">
         <h2>{{'Add annonce' | translate }}</h2>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="fill">
@@ -13,6 +13,7 @@
                   <mat-option value="DEMAND">{{'demand' | translate | uppercase}}</mat-option>
                   <mat-option value="OFFER">{{'offer' | translate | uppercase}}</mat-option>
                   <mat-option value="QUESTION">{{'question' | translate | uppercase}}</mat-option>
+                  <mat-option value="POST" *ngIf="isAdmin">{{'post' | translate | uppercase}}</mat-option>
                 </mat-select>
               </mat-form-field>
               <mat-form-field appearance="fill">

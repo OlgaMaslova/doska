@@ -33,9 +33,11 @@
     "No demands yet": "Pas de demandes pour le moment",
     "No offers yet": "Pas d'offres pour le moment",
     "No questions yet": "Pas de questions pour le moment",
-    "Back": "Retour vers les annonces",
+    "Back": "Retour",
     "for administration only": "visible à l'administration uniquement",
     "tooltipCardComment": "Voir les commentaires",
-    "local ads": "Annonces Locales"
+    "local ads": "Annonces Locales",
+    "News": "Nouvelles",
+    "post": "publication"
 
 }

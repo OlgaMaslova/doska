@@ -33,3 +33,7 @@ $teal-palette: mat.define-palette(mat.$teal-palette);
   color: mat.get-color-from-palette($my-palette, 700);
 }
 
+.description-container {
+  white-space: pre-wrap;
+}
+

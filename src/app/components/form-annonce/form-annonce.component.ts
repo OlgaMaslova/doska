@@ -16,6 +16,7 @@ import { AnnonceStatus } from 'src/models';
 
 import * as uuid from 'uuid';
 import { uploadFileToS3 } from 'src/app/helpers.service';
+import { Auth } from 'aws-amplify';
 
 @Component({
     selector: 'app-form-annonce',
@@ -31,6 +32,8 @@ export class FormAnnonceComponent implements OnInit {
 
     currentFilePath;
 
+    isAdmin = false;
+
     constructor(
         private fb: FormBuilder,
         private location: Location,
@@ -39,7 +42,14 @@ export class FormAnnonceComponent implements OnInit {
         private translate: TranslateService
     ) {}
 
-    ngOnInit(): void {
+    async ngOnInit() {
+        try {
+            await Auth.currentAuthenticatedUser().then((user) => {
+                if (user) {
+                    this.isAdmin = true;
+                }
+            });
+        } catch (error) {}
         this.form = this.fb.group({
             id: uuid.v4(),
             type: [null, [Validators.required]],
@@ -75,6 +85,8 @@ export class FormAnnonceComponent implements OnInit {
         if (!this.form.valid) {
             return;
         }
+        console.log(input.text);
+        return;
         try {
             if (this.fileToUpload) {
                 const result = await uploadFileToS3(

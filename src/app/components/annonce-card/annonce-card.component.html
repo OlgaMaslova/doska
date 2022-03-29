@@ -10,7 +10,7 @@
         </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <p>{{annonce.text}}</p>
+        <p class="description-container">{{annonce.text}}</p>
     </mat-card-content>
 
     <img [hidden]="!annonce.coverPhoto" mat-card-image [src]="annonce.coverPhoto" [alt]="annonce.title">

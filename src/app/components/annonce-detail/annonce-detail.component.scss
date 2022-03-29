@@ -33,6 +33,11 @@ $teal-palette: mat.define-palette(mat.$teal-palette);
             }
         }
 
+        .content {
+            padding: 0rem 1rem;
+            text-align: left !important;
+        }
+
 
         .photo {
             margin-top: 0.5rem;
