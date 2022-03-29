@@ -7,9 +7,19 @@ $amber-palette: mat.define-palette(mat.$amber-palette);
         margin-bottom: 0;
         font-size: 2rem;
     }
+
+    h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 1.25rem;
+    }
+    
     @media screen and (max-width: 500px) {
         h1 {
             font-size: 1rem;
+        }
+        h3 {
+            display: none;
         }
         .mat-flat-button {
             padding: 0px 2px;
