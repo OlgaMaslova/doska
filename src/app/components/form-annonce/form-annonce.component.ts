@@ -85,8 +85,6 @@ export class FormAnnonceComponent implements OnInit {
         if (!this.form.valid) {
             return;
         }
-        console.log(input.text);
-        return;
         try {
             if (this.fileToUpload) {
                 const result = await uploadFileToS3(
