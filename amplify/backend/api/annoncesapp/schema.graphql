@@ -24,7 +24,7 @@ type Annonce @model @auth(rules: [{allow: public}]) {
   photos: [String]
   type: AnnonceType
   location: String
-  status: AnnonceStatus @index(name: "byStatus", queryField: "annoncesByStatus")
+  status: AnnonceStatus @index(name: "byStatus", sortKeyFields: ["createdAt"], queryField: "annoncesByStatus")
   comments: [Comment] @hasMany(indexName: "byAnnonce", fields: ["id"])
 }
 

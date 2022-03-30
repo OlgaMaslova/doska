@@ -262,6 +262,16 @@ export type ModelAnnonceConnection = {
   nextToken?: string | null;
 };
 
+export type ModelStringKeyConditionInput = {
+  eq?: string | null;
+  le?: string | null;
+  lt?: string | null;
+  ge?: string | null;
+  gt?: string | null;
+  between?: Array<string | null> | null;
+  beginsWith?: string | null;
+};
+
 export enum ModelSortDirection {
   ASC = "ASC",
   DESC = "DESC"
@@ -977,13 +987,14 @@ export class APIService {
   }
   async AnnoncesByStatus(
     status: AnnonceStatus,
+    createdAt?: ModelStringKeyConditionInput,
     sortDirection?: ModelSortDirection,
     filter?: ModelAnnonceFilterInput,
     limit?: number,
     nextToken?: string
   ): Promise<AnnoncesByStatusQuery> {
-    const statement = `query AnnoncesByStatus($status: AnnonceStatus!, $sortDirection: ModelSortDirection, $filter: ModelAnnonceFilterInput, $limit: Int, $nextToken: String) {
-        annoncesByStatus(status: $status, sortDirection: $sortDirection, filter: $filter, limit: $limit, nextToken: $nextToken) {
+    const statement = `query AnnoncesByStatus($status: AnnonceStatus!, $createdAt: ModelStringKeyConditionInput, $sortDirection: ModelSortDirection, $filter: ModelAnnonceFilterInput, $limit: Int, $nextToken: String) {
+        annoncesByStatus(status: $status, createdAt: $createdAt, sortDirection: $sortDirection, filter: $filter, limit: $limit, nextToken: $nextToken) {
           __typename
           items {
             __typename
@@ -1011,6 +1022,9 @@ export class APIService {
     const gqlAPIServiceArguments: any = {
       status
     };
+    if (createdAt) {
+      gqlAPIServiceArguments.createdAt = createdAt;
+    }
     if (sortDirection) {
       gqlAPIServiceArguments.sortDirection = sortDirection;
     }

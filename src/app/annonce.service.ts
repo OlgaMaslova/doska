@@ -8,6 +8,7 @@ import {
     Comment,
     CreateAnnonceInput,
     CreateCommentInput,
+    ModelSortDirection,
     UpdateAnnonceInput
 } from './API.service';
 import { deleteFromS3, getSignedFile } from './helpers.service';
@@ -26,8 +27,13 @@ export class AnnonceService {
     async getAnnoncesByStatus(
         status: AnnonceStatus
     ): Promise<ExtendedAnnonce[] | null> {
-        const annonces = (await this.API.AnnoncesByStatus(status))
-            .items as ExtendedAnnonce[];
+        const annonces = (
+            await this.API.AnnoncesByStatus(
+                status,
+                undefined,
+                ModelSortDirection.DESC
+            )
+        ).items as ExtendedAnnonce[];
         if (annonces) {
             await Promise.all(
                 annonces.map(async (annonce) => {

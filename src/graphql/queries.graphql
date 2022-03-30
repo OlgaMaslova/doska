@@ -58,6 +58,7 @@ query ListAnnonces(
 }
 query AnnoncesByStatus(
   $status: AnnonceStatus!
+  $createdAt: ModelStringKeyConditionInput
   $sortDirection: ModelSortDirection
   $filter: ModelAnnonceFilterInput
   $limit: Int
@@ -65,6 +66,7 @@ query AnnoncesByStatus(
 ) {
   annoncesByStatus(
     status: $status
+    createdAt: $createdAt
     sortDirection: $sortDirection
     filter: $filter
     limit: $limit
